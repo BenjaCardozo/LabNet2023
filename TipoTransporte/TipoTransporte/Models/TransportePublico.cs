@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TipoTransporte.Models
+﻿namespace TipoTransporte.Models
 {
     public abstract class TransportePublico
     {
+        //utilizando id para poder mostrar luego por consola el numero del transporte
         private int _id;
         private int _pasajeros;
 

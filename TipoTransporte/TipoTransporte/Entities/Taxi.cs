@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TipoTransporte.Models;
+﻿using TipoTransporte.Models;
 
 namespace TipoTransporte.Entities
 {
@@ -11,6 +6,7 @@ namespace TipoTransporte.Entities
     {
         public Taxi(int Id, int Pasajeros) : base(Id, Pasajeros) {}
 
+        //Polimorfismo de los metodos avanzar y detenerse
         public override string Avanzar()
         {
             return string.Format("Taxi {0}: {1} pasajeros", Id, Pasajeros);
