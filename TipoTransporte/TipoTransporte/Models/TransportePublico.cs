@@ -8,11 +8,25 @@ namespace TipoTransporte.Models
 {
     public abstract class TransportePublico
     {
-        public int Pasajeros { get; set; }
+        private int _id;
+        private int _pasajeros;
 
-        public TransportePublico(int Pasajeros) 
+        public TransportePublico(int Id ,int Pasajeros)
         {
-            this.Pasajeros = Pasajeros;
+            _id = Id;
+            _pasajeros = Pasajeros;
+        }
+
+        public int Pasajeros
+        {
+            get { return _pasajeros; }
+            set { _pasajeros = value; }
+        }
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
         }
 
         public abstract string Avanzar();

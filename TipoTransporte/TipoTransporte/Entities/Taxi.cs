@@ -9,18 +9,15 @@ namespace TipoTransporte.Entities
 {
     public class Taxi : TransportePublico
     {
-        public Taxi(int Pasajeros) : base(Pasajeros)
-        {
-        }
+        public Taxi(int Id, int Pasajeros) : base(Id, Pasajeros) {}
 
         public override string Avanzar()
         {
-            throw new NotImplementedException();
+            return string.Format("Taxi {0}: {1} pasajeros", Id, Pasajeros);
         }
-
         public override string Detenerse()
         {
-            throw new NotImplementedException();
+            return "El Taxi se detiene...";
         }
     }
 }

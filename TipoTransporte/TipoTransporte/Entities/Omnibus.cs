@@ -9,18 +9,15 @@ namespace TipoTransporte.Entities
 {
     public class Omnibus : TransportePublico
     {
-        public Omnibus(int Pasajeros) : base(Pasajeros)
-        {
-        }
+        public Omnibus(int Id, int Pasajeros) : base(Id, Pasajeros) { }
 
         public override string Avanzar()
         {
-            throw new NotImplementedException();
+            return string.Format("Omnibus {0}: {1} pasajeros", Id, Pasajeros);
         }
-
         public override string Detenerse()
         {
-            throw new NotImplementedException();
+            return "El Omnibus se detiene...";
         }
     }
 }
