@@ -4,8 +4,14 @@ namespace TipoTransporte.Entities
 {
     public class Omnibus : TransportePublico
     {
-        public Omnibus(int Id, int Pasajeros) : base(Id, Pasajeros) {}
 
+        private static readonly int _cantMax = 60;
+        public Omnibus(int Id, int Pasajeros) : base(Id, Pasajeros){}
+
+        public static int CantMax
+        {
+            get { return _cantMax; }
+        }
 
         //Polimorfismo de los metodos avanzar y detenerse
         public override string Avanzar()
@@ -14,7 +20,9 @@ namespace TipoTransporte.Entities
         }
         public override string Detenerse()
         {
-            return "El Omnibus se detiene...";
+            return "El Omnibus se detiene por exceso de pasajeros...";
         }
+
+
     }
 }

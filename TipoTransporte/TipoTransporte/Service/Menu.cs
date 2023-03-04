@@ -56,7 +56,6 @@ namespace TipoTransporte.Service
                 {
                     Console.WriteLine("Se ha producido un error: " + ex.Message);
                 }
-
                 transportes
                     .Select(t => "-----------------------------------------------------------------\n" 
                     + t.Avanzar())
@@ -86,7 +85,7 @@ namespace TipoTransporte.Service
                         pasajeros = int.Parse(Console.ReadLine());
 
                         //como no cuento el conductor, no permito ingresar 0
-                        if (pasajeros <= 0 || pasajeros > 4)
+                        if (pasajeros <= 0 || pasajeros > Taxi.CantMax)
                         {
                             Console.WriteLine("Cantidad de pasajeros inválida. Ingrese un valor entre 0 y 4.");
                         }
@@ -131,7 +130,7 @@ namespace TipoTransporte.Service
                     try
                     {
                         pasajeros = int.Parse(input);
-                        if (pasajeros < 0 || pasajeros > 60)
+                        if (pasajeros < 0 || pasajeros > Omnibus.CantMax)
                         {
                             Console.WriteLine("Cantidad de pasajeros inválida. Ingrese un valor entre 0 y 60.");
                         }
