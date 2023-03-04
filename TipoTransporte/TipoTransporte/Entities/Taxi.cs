@@ -20,7 +20,7 @@ namespace TipoTransporte.Entities
         }
         public override string Detenerse()
         {
-            return "El Taxi se detiene por exceso de pasajeros...";
+            return $"El Taxi {Id} se detiene por exceso de pasajeros...";
         }
     }
 }

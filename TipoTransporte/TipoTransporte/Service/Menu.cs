@@ -56,11 +56,29 @@ namespace TipoTransporte.Service
                 {
                     Console.WriteLine("Se ha producido un error: " + ex.Message);
                 }
-                transportes
-                    .Select(t => "-----------------------------------------------------------------\n" 
-                    + t.Avanzar())
-                    .ToList()
-                    .ForEach(Console.WriteLine);
+                //transportes
+                //    .Select(t => "-----------------------------------------------------------------\n" 
+                //    + t.Avanzar())
+                //    .ToList()
+                //    .ForEach(Console.WriteLine);
+
+                transportes.ForEach(t =>
+                {
+                    Console.WriteLine("-----------------------------------------------------------------");
+                    
+
+                    if (t is Omnibus && t.Pasajeros > Omnibus.CantMax)
+                    {
+                        Console.WriteLine(t.Detenerse());
+                    }
+                    else if (t is Taxi && t.Pasajeros > Taxi.CantMax)
+                    {
+                        Console.WriteLine(t.Detenerse());
+                    } else
+                    {
+                        Console.WriteLine(t.Avanzar());
+                    }
+                });
 
                 Console.WriteLine("-----------------------------------------------------------------");
                 transportes.Clear();
