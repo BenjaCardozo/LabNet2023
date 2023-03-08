@@ -72,7 +72,7 @@ namespace Division.Presentacion
                 Console.Write("Ingresa el divisor para una division: ");
                 double divisor = double.Parse(Console.ReadLine());
                 double resultado = Operar.DividirPor(divisor);
-                Console.WriteLine($"Resultado: {resultado}");
+                Console.WriteLine($"Resultado: {resultado.ToString("N4")}");
             }
             catch (DivideByZeroException ex)
             {
@@ -104,7 +104,7 @@ namespace Division.Presentacion
                 Console.Write("Ahora ingresa el divisor: ");
                 divisor = double.Parse(Console.ReadLine());
                 double resultado = Operar.Division(dividendo, divisor);
-                Console.WriteLine($"Resultado: {resultado}");
+                Console.WriteLine($"Resultado: {resultado.ToString("N4")}");
             }
             catch (DivideByZeroException ex)
             {
