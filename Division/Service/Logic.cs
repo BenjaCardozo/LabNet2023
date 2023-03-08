@@ -1,12 +1,30 @@
-﻿using System;
+﻿using Division.Excepciones;
+using System;
 
 namespace Division.Service
 {
     public class Logic
     {
-        public static void ThrowException()
+        public static void MetodoConExcepcion(bool op)
         {
-            throw new Exception("Ha ocurrido una excepción personalizada.");
+            try
+            {
+                if (op)
+                {
+                    throw new InvalidProgramException();
+                }else if (!op)
+                {
+                    throw new BenjaExcepcion();
+                }
+            }
+            catch (InvalidProgramException)
+            {
+                throw;
+            }
+            catch(BenjaExcepcion) 
+            {
+                throw;
+            }
         }
     }
 }

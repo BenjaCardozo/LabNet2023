@@ -4,44 +4,51 @@ namespace Division.Service
 {
     public class Operar
     {
-        static void DividirPor()
+        public static void DividirPor(double divisor)
         {
             try
             {
-                Console.Write("Ingresa un número: ");
-                int numero = Convert.ToInt32(Console.ReadLine());
-                double resultado = 1000 / numero;
+                double resultado = 1000 / divisor;
+
+                if (divisor == 0)
+                {
+                    throw new DivideByZeroException();
+                }
                 Console.WriteLine($"Resultado: {resultado}");
             }
             catch (DivideByZeroException ex)
             {
                 Console.WriteLine($"Ha ocurrido una excepción: {ex.Message}");
+                Console.WriteLine("");
             }
             finally
             {
                 Console.WriteLine("La operación ha terminado.");
+                Console.WriteLine("");
             }
         }
 
-        public static void Division(int dividendo, int divisor)
+        public static void Division(double dividendo, double divisor)
         {
             try
             {
-                int resultado = dividendo / divisor;
+                if (divisor == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+                double resultado = dividendo / divisor;
                 Console.WriteLine($"Resultado: {resultado}");
             }
             catch (DivideByZeroException ex)
             {
-                Console.WriteLine("Solo Julio Profe tiene permitido dividir por cero!");
+                Console.WriteLine("Solo Chuck Norris divide por cero!");
                 Console.WriteLine($"Ha ocurrido una excepción: {ex.Message}");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Seguro ingresó una letra o no ingresó nada!");
+                Console.WriteLine("");
             }
             finally
             {
                 Console.WriteLine("La operación ha terminado.");
+                Console.WriteLine("");
             }
         }
 
