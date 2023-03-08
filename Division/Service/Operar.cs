@@ -4,51 +4,44 @@ namespace Division.Service
 {
     public class Operar
     {
-        public static void DividirPor(double divisor)
+        public static double DividirPor(double divisor)
         {
             try
             {
                 double resultado = 1000 / divisor;
-
                 if (divisor == 0)
                 {
                     throw new DivideByZeroException();
                 }
-                Console.WriteLine($"Resultado: {resultado}");
+                return resultado;
             }
-            catch (DivideByZeroException ex)
+            catch (DivideByZeroException)
             {
-                Console.WriteLine($"Ha ocurrido una excepción: {ex.Message}");
-                Console.WriteLine("");
+                throw;
             }
-            finally
+            catch (Exception)
             {
-                Console.WriteLine("La operación ha terminado.");
-                Console.WriteLine("");
+                throw;
             }
         }
-
-        public static void Division(double dividendo, double divisor)
+        public static double Division(double dividendo, double divisor)
         {
             try
             {
+                double resultado = dividendo / divisor;
                 if (divisor == 0)
                 {
                     throw new DivideByZeroException();
                 }
-                double resultado = dividendo / divisor;
-                Console.WriteLine($"Resultado: {resultado}");
+                return resultado;
             }
-            catch (DivideByZeroException ex)
+            catch (DivideByZeroException)
             {
-                Console.WriteLine("Solo Chuck Norris divide por cero!");
-                Console.WriteLine($"Ha ocurrido una excepción: {ex.Message}");
-                Console.WriteLine("");
+                throw;
             }
-            finally
+            catch (Exception)
             {
-                Console.WriteLine("La operación ha terminado.");
-                Console.WriteLine("");
+                throw;
             }
         }
 

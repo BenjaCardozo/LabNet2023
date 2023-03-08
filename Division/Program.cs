@@ -1,11 +1,4 @@
 ﻿using Division.Presentacion;
-using Division.Service;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Division
@@ -14,7 +7,7 @@ namespace Division
     {
         static void Main(string[] args)
         {
-            Menu.menu();
+            Menu.Presentacion();
         }
     }
 }

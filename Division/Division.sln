@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Division", "Division.csproj", "{54D70661-78B7-4D61-A46D-4982E3EB7D96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivisionTests", "..\DivisionTests\DivisionTests.csproj", "{CA9A1224-AEC4-422E-B60D-904C262BC50F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{54D70661-78B7-4D61-A46D-4982E3EB7D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54D70661-78B7-4D61-A46D-4982E3EB7D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54D70661-78B7-4D61-A46D-4982E3EB7D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9A1224-AEC4-422E-B60D-904C262BC50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9A1224-AEC4-422E-B60D-904C262BC50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9A1224-AEC4-422E-B60D-904C262BC50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9A1224-AEC4-422E-B60D-904C262BC50F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,25 +1,16 @@
 ﻿using Division.Excepciones;
 using Division.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Division.Presentacion
 {
     public class Menu
     {
-        public static void menu()
+        public static void Presentacion()
         {
             while (true)
             {
-                Console.WriteLine("Seleccione un punto del practico para hacer:");
-                Console.WriteLine("1. Metodo que divida un numero, si es cero lanza una excepcion");
-                Console.WriteLine("2. Metodo que divida dos numeros");
-                Console.WriteLine("3. Clase Logic que dispara una excepcion");
-                Console.WriteLine("4. Clase Logic que dispara una excepcion personalizada");
-                Console.WriteLine("5. Salir");
+                Opciones();
                 try
                 {
                     int opcion = int.Parse(Console.ReadLine());
@@ -52,11 +43,21 @@ namespace Division.Presentacion
                 }
                 catch(Exception ex)
                 {
+                    Console.WriteLine("Ha ocurrido una Exetion.");
+                    Console.WriteLine(ex.GetType().Name);
                     Console.WriteLine(ex.Message);
                 }
-
                 ContinuarYLimpiarConsola();
             }
+        }
+        static void Opciones()
+        {
+            Console.WriteLine("Seleccione un punto del practico para hacer:");
+            Console.WriteLine("1. Metodo par ingresar un divisor, si es cero lanza una excepcion");
+            Console.WriteLine("2. Metodo que divida dos numeros");
+            Console.WriteLine("3. Clase Logic que dispara una excepcion");
+            Console.WriteLine("4. Clase Logic que dispara una excepcion personalizada");
+            Console.WriteLine("5. Salir");
         }
         static void ContinuarYLimpiarConsola()
         {
@@ -66,8 +67,31 @@ namespace Division.Presentacion
         }
         static void Punto1()
         {
-            Console.Write("Ingresa el divisor para una division: ");
-            Operar.DividirPor(double.Parse(Console.ReadLine()));
+            try
+            {
+                Console.Write("Ingresa el divisor para una division: ");
+                double divisor = double.Parse(Console.ReadLine());
+                double resultado = Operar.DividirPor(divisor);
+                Console.WriteLine($"Resultado: {resultado}");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"Ha ocurrido una excepción: {ex.Message}");
+                Console.WriteLine("");
+            }
+            catch (FormatException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Console.WriteLine("La operación ha terminado.");
+                Console.WriteLine("");
+            }
         }
         static void Punto2()
         {
@@ -75,15 +99,31 @@ namespace Division.Presentacion
             double divisor;
             try
             {
-                Console.Write("Ingresa el primer número: ");
+                Console.Write("Ingresa el dividendo de una division: ");
                 dividendo = double.Parse(Console.ReadLine());
-                Console.Write("Ingresa el segundo número: ");
+                Console.Write("Ahora ingresa el divisor: ");
                 divisor = double.Parse(Console.ReadLine());
-                Operar.Division(dividendo, divisor);
+                double resultado = Operar.Division(dividendo, divisor);
+                Console.WriteLine($"Resultado: {resultado}");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Solo Chuck Norris divide por cero!");
+                Console.WriteLine($"Ha ocurrido una excepción: {ex.Message}");
+                Console.WriteLine("");
             }
             catch (FormatException)
             {
                 Console.WriteLine("Sos lolero o ingresaste una letra o nada?");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Console.WriteLine("La operación ha terminado.");
+                Console.WriteLine("");
             }
         }
         static void Punto3y4(bool op)
@@ -100,8 +140,10 @@ namespace Division.Presentacion
             {
                 Console.WriteLine($"Se ha capturado una excepción: {ex.GetType().Name}. Mensaje: {ex.Message}");
             }
-            
+            catch (Exception)
+            {
+                throw;
+            }
         }
-
     }
 }
