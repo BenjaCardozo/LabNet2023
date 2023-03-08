@@ -6,43 +6,21 @@ namespace Division.Service
     {
         public static double DividirPor(double divisor)
         {
-            try
+            if (divisor == 0)
             {
-                double resultado = 1000 / divisor;
-                if (divisor == 0)
-                {
-                    throw new DivideByZeroException();
-                }
-                return resultado;
+                throw new DivideByZeroException();
             }
-            catch (DivideByZeroException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            double resultado = 1000 / divisor;
+            return resultado;
         }
         public static double Division(double dividendo, double divisor)
         {
-            try
+            if (divisor == 0)
             {
-                double resultado = dividendo / divisor;
-                if (divisor == 0)
-                {
-                    throw new DivideByZeroException();
-                }
-                return resultado;
+                throw new DivideByZeroException();
             }
-            catch (DivideByZeroException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            double resultado = dividendo / divisor;
+            return resultado;
         }
 
     }

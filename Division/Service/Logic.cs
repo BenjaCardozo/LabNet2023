@@ -7,23 +7,12 @@ namespace Division.Service
     {
         public static void MetodoConExcepcion(bool op)
         {
-            try
+            if (op)
             {
-                if (op)
-                {
-                    throw new InvalidProgramException();
-                }else if (!op)
-                {
-                    throw new BenjaExcepcion();
-                }
-            }
-            catch (InvalidProgramException)
+                throw new InvalidProgramException();
+            }else if (!op)
             {
-                throw;
-            }
-            catch(BenjaExcepcion) 
-            {
-                throw;
+                throw new BenjaExcepcion();
             }
         }
     }
