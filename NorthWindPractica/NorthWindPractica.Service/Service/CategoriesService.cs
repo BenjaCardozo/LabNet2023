@@ -1,4 +1,5 @@
 ﻿using NorthWindPractica.Data;
+using NorthWindPractica.Data.Command;
 using NorthWindPractica.Logic.Logic;
 using NorthWindPractica.Service.Interface;
 using NorthWindPractica.Service.MyException;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace NorthWindPractica.Service.Service
 {
-    public class CategoriesService : IABMService<Categories, int>
+    public class CategoriesService
     {
-        private CategoriesLogic _logic = new CategoriesLogic();
+        private ABMGeneric<Categories> _logic = new ABMGeneric<Categories>();
         public IEnumerable<Categories> GetAll()
         {
             try

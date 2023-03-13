@@ -6,11 +6,10 @@ namespace NorthWindPractica.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Customers
+    public partial class Suppliers
     {
         [Key]
-        [StringLength(5)]
-        public string CustomerID { get; set; }
+        public int SupplierID { get; set; }
 
         [Required]
         [StringLength(40)]
@@ -42,5 +41,8 @@ namespace NorthWindPractica.Data
 
         [StringLength(24)]
         public string Fax { get; set; }
+
+        [Column(TypeName = "ntext")]
+        public string HomePage { get; set; }
     }
 }

@@ -8,11 +8,9 @@ namespace NorthWindPractica.UI.Presentation
 {
     public class MenuPresentation
     {
-        private readonly CategoriesPresentation _categories = new CategoriesPresentation();
-
         public MenuPresentation() 
         {
-            Console.Title = "=== MENU GENERAL ===";
+            Console.Title = "MENU GENERAL";
         }
 
         public void MenuGeneral()
@@ -28,6 +26,7 @@ namespace NorthWindPractica.UI.Presentation
                     switch (opcion)
                     {
                         case 1:
+                            CategoriesPresentation _categories = new CategoriesPresentation();
                             _categories.CategoriesMenu();
                             break;
                         case 2:

@@ -6,14 +6,16 @@ namespace NorthWindPractica.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Region")]
-    public partial class Region
+    public partial class Shippers
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int RegionID { get; set; }
+        [Key]
+        public int ShipperID { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string RegionDescription { get; set; }
+        [StringLength(40)]
+        public string CompanyName { get; set; }
+
+        [StringLength(24)]
+        public string Phone { get; set; }
     }
 }

@@ -49,11 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Categories.cs" />
-    <Compile Include="Models\Customers.cs" />
-    <Compile Include="Models\Employees.cs" />
-    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\CustomerDemographics.cs" />
     <Compile Include="Models\Region.cs" />
-    <Compile Include="Models\Territories.cs" />
+    <Compile Include="Models\Shippers.cs" />
+    <Compile Include="Models\Suppliers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,8 +12,12 @@ namespace NorthWindPractica.UI.Presentation
 {
     public class CategoriesPresentation
     { 
-        private readonly CategoriesService _service = new CategoriesService();
-
+        private readonly CategoriesService _service;
+        public CategoriesPresentation() 
+        {
+            _service = new CategoriesService();
+            Console.Title = "MENU DE CATEGORIAS";
+        }
         
         public void CategoriesMenu()
         {
