@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\NorthWindPractica.Data\NorthWindPractica.Data.csproj">
+      <Project>{4F6A5925-2448-48B4-B5CE-D7513F16C6A6}</Project>
+      <Name>NorthWindPractica.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NorthWindPractica.Entities\NorthWindPractica.Entities.csproj">
       <Project>{66fdc20a-f95f-46e8-878c-7d808cdea480}</Project>
       <Name>NorthWindPractica.Entities</Name>

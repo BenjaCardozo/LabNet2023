@@ -55,7 +55,8 @@
     <Compile Include="Context\NorthwindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\Interface\IQueryGeneric.cs" />
-    <Compile Include="Query\QueryGeneric.cs" />
+    <Compile Include="Query\CategoriesQuery.cs" />
+    <Compile Include="Query\ShippersQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
