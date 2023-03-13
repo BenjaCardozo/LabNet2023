@@ -11,6 +11,9 @@ namespace NorthWindPractica.UI
     {
         static void Main(string[] args)
         {
+            MenuPresentation menu = new MenuPresentation();
+
+            menu.MenuGeneral();
         }
     }
 }

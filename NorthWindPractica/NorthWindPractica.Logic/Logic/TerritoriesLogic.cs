@@ -19,14 +19,11 @@ namespace NorthWindPractica.Logic.Logic
             _context.Territories.Add(newTerritory);
             _context.SaveChanges();
         }
-
         public void Delete(Territories deleteTerritory)
         {
             _context.Territories.Remove(deleteTerritory);
             _context.SaveChanges();
         }
-        
-
         public string IdGenerator()
         {
             Random random = new Random();
@@ -34,7 +31,6 @@ namespace NorthWindPractica.Logic.Logic
             string randomString = randomNumber.ToString("D5");
             return randomString;
         }
-
         public void Update(Territories updateTerritory)
         {
             Territories territoryToUpdate = _context.Territories.Find(updateTerritory.TerritoryID);

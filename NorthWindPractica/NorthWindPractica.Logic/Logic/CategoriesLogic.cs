@@ -17,13 +17,11 @@ namespace NorthWindPractica.Logic.Logic
             _context.Categories.Add(newCategory);
             _context.SaveChanges();
         }
-
         public void Delete(Categories deleteCategory)
         {
             _context.Categories.Remove(deleteCategory);
             _context.SaveChanges();
         }
-
         public bool ExistID(int id) => _context.Categories.Any(c => c.CategoryID == id);
 
         public IEnumerable<Categories> GetAll() => _context.Categories.ToList();
@@ -37,12 +35,11 @@ namespace NorthWindPractica.Logic.Logic
             categoryToUpdate.CategoryName = updateCategory.CategoryName;
             categoryToUpdate.Description = updateCategory.Description;
 
+
             _context.SaveChanges();
         }
-        public int IdGenerator()
-        {
-            return _context.Categories.Max(x => x.CategoryID) + 1;
-        }
+        public int IdGenerator() => _context.Categories.Max(x => x.CategoryID) + 1;
+
         public IEnumerable<Categories> Find(string find) => _context.Categories
                 .Where(c => c.CategoryName.ToLower().Contains(find))
                 .ToList();

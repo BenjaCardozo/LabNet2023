@@ -12,8 +12,7 @@ namespace NorthWindPractica.Service.Service
 {
     public class CategoriesService : IABMService<Categories, int>
     {
-        private CategoriesLogic _logic;
-        public CategoriesService() => _logic = new CategoriesLogic();
+        private CategoriesLogic _logic = new CategoriesLogic();
         public IEnumerable<Categories> GetAll()
         {
             try
@@ -88,7 +87,6 @@ namespace NorthWindPractica.Service.Service
                 }
             }
         }
-
         public IEnumerable<Categories> Find (string find)
         {
             string lowerFind = find.ToLower();

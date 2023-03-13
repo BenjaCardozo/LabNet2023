@@ -51,6 +51,7 @@
     <Compile Include="Interface\IABMLogic.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
     <Compile Include="Logic\CategoriesLogic.cs" />
+    <Compile Include="Logic\RegionLogic.cs" />
     <Compile Include="Logic\TerritoriesLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
