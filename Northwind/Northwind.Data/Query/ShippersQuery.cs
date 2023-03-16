@@ -9,11 +9,17 @@ namespace Northwind.Data.Query
 {
     public class ShippersQuery : IQueryGeneric<Shippers, int>
     {
+        NorthwindContext _context;
+        public ShippersQuery (NorthwindContext context)
+        {
+            _context = context;
+        }
+        public ShippersQuery() { }
         public bool ExistID(int id)
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Shippers.Any(s => s.ShipperID == id);
                 }
@@ -27,7 +33,7 @@ namespace Northwind.Data.Query
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Shippers.ToList();
                 }
@@ -41,7 +47,7 @@ namespace Northwind.Data.Query
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Shippers.First(s => s.ShipperID == id);
                 }
@@ -55,7 +61,7 @@ namespace Northwind.Data.Query
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Shippers.Max(c => c.ShipperID);
                 }
@@ -70,7 +76,7 @@ namespace Northwind.Data.Query
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Shippers
                         .Where(s => s.CompanyName.Contains(str))

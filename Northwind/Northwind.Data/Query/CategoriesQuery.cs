@@ -8,11 +8,17 @@ namespace Northwind.Data.Query.Interface
 {
     public class CategoriesQuery : IQueryGeneric<Categories, int>
     {
+        NorthwindContext _context;
+        public CategoriesQuery(NorthwindContext context)
+        {
+            _context = context;
+        }
+        public CategoriesQuery() { }
         public List<Categories> GetAll()
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Categories.ToList();
                 }
@@ -26,7 +32,7 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Categories.Find(id);
                 }
@@ -40,7 +46,7 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Categories.Any(c => c.CategoryID == id);
                 }
@@ -54,7 +60,7 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Categories.Max(c=> c.CategoryID);
                 }
@@ -68,7 +74,7 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     return _context.Categories
                         .Where(c => c.CategoryName.Contains(str))

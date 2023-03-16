@@ -10,11 +10,17 @@ namespace Northwind.Data.Command
 {
     public class ABMGeneric<T> : IABMGeneric<T> where T : class, new()
     {
+        NorthwindContext _context;
+        public ABMGeneric(NorthwindContext context) 
+        {
+            _context = context;
+        }
+        public ABMGeneric() { }
         public void Add(T entity)
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     _context.Entry(entity).State = EntityState.Added;
                     _context.SaveChanges();
@@ -29,7 +35,7 @@ namespace Northwind.Data.Command
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     _context.Entry(entity).State = EntityState.Deleted;
                     _context.SaveChanges();
@@ -44,7 +50,7 @@ namespace Northwind.Data.Command
         {
             try
             {
-                using (var _context = new NorthwindContext())
+                using (_context = new NorthwindContext())
                 {
                     _context.Entry(entity).State = EntityState.Modified;
                     _context.SaveChanges();
