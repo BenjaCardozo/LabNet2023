@@ -57,7 +57,7 @@ namespace Northwind.Data.Query
             {
                 using (var _context = new NorthwindContext())
                 {
-                    return _context.Shippers.Last().ShipperID;
+                    return _context.Shippers.Max(c => c.ShipperID);
                 }
             }
             catch (Exception)

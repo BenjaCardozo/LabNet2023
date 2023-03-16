@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Data.Command.Interface
 {
-    interface IABMGeneric<T>
+    public interface IABMGeneric<T>
     {
         void Add(T entity);
         void Delete(T entity);

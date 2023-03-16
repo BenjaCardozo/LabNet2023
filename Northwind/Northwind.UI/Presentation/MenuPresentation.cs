@@ -31,6 +31,8 @@ namespace Northwind.UI.Presentation
                             break;
                         case 2:
                             ShippersPresentation _shipper = new ShippersPresentation();
+                            ContinuarYLimpiarConsola();
+                            _shipper.ShippersMenu();
                             break;
                         case 3:
                             Console.WriteLine("Saliendo...");
@@ -60,7 +62,7 @@ namespace Northwind.UI.Presentation
         {
             Console.WriteLine("========== MENU GENERAL ==========");
             Console.WriteLine("1. IR A MENÚ DE CATEGORIAS");
-            Console.WriteLine("2. IR A MENÚ DE CARGADORES");
+            Console.WriteLine("2. IR A MENÚ DE EXPEDIDORES");
             Console.WriteLine("3. SALIR");
             Console.Write("Selecione una opción: ");
         }

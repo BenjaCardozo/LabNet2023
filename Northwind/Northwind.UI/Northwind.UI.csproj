@@ -56,6 +56,7 @@
     <Compile Include="Extension\StringExtensions.cs" />
     <Compile Include="Presentation\CategoriesPresentation.cs" />
     <Compile Include="Presentation\MenuPresentation.cs" />
+    <Compile Include="Presentation\ShippersPresentation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

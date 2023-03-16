@@ -6,13 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Northwind.Data.Command;
+using Northwind.Data.Command.Interface;
+using Northwind.Data.Query.Interface;
 
 namespace Northwind.Logic.Application
 {
     public class ShippersLogic
-    {
-        private ShippersQuery _query = new ShippersQuery();
-        private ABMGeneric<Shippers> _command = new ABMGeneric<Shippers>();
+    {        
+        private IABMGeneric<Shippers> _command;
+        private IQueryGeneric<Shippers, int> _query;
+        public ShippersLogic() 
+        {
+            _command = new ABMGeneric<Shippers>();
+            _query = new ShippersQuery();
+        }
+        public ShippersLogic (IABMGeneric<Shippers> command, IQueryGeneric<Shippers, int> query)
+        {
+            _command = command;
+            _query = query;
+        }            
+            
         public void Add(Shippers newShipper)
         {
             try
@@ -42,7 +55,7 @@ namespace Northwind.Logic.Application
                 }
                 else
                 {
-                    throw new Exception("El/la expedidor/expedidora que desea eliminar no existe.");
+                    throw new Exception("El expedidor que desea eliminar no existe.");
                 }
             }
             catch (Exception)

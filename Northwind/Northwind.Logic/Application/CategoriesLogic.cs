@@ -6,13 +6,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Northwind.Data.Command.Interface;
 
 namespace Northwind.Logic.Application
 {
     public class CategoriesLogic
     {
-        private ABMGeneric<Categories> _command = new ABMGeneric<Categories>();
-        private CategoriesQuery _query = new CategoriesQuery();
+        private IABMGeneric<Categories> _command;
+        private IQueryGeneric<Categories, int> _query;
+
+        public CategoriesLogic() 
+        {
+            _command = new ABMGeneric<Categories>();
+            _query = new CategoriesQuery();
+        }
+        public CategoriesLogic (IABMGeneric<Categories> command, IQueryGeneric<Categories, int> query)
+        {
+            _command = command;
+            _query = query;
+        }
         public void Add(Categories newCategory)
         {
             try
