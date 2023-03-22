@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Data", "Northwind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.LogicTests", "Northwind.LogicTests\Northwind.LogicTests.csproj", "{29A81054-1E92-41A9-925E-9731500635A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.MVC", "Northwind.MVC\Northwind.MVC.csproj", "{419AD54B-4998-4B9B-AB98-2EA338551380}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{29A81054-1E92-41A9-925E-9731500635A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A81054-1E92-41A9-925E-9731500635A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A81054-1E92-41A9-925E-9731500635A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{419AD54B-4998-4B9B-AB98-2EA338551380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{419AD54B-4998-4B9B-AB98-2EA338551380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{419AD54B-4998-4B9B-AB98-2EA338551380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{419AD54B-4998-4B9B-AB98-2EA338551380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
