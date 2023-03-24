@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Northwind.Data.Command.Interface
+﻿namespace Northwind.Data.Command.Interface
 {
     public interface IABMGeneric<T>
     {

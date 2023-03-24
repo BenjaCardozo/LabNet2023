@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extension\StringExtensions.cs" />
     <Compile Include="Presentation\CategoriesPresentation.cs" />
     <Compile Include="Presentation\MenuPresentation.cs" />
     <Compile Include="Presentation\ShippersPresentation.cs" />
@@ -72,6 +71,10 @@
     <ProjectReference Include="..\Northwind.Logic\Northwind.Logic.csproj">
       <Project>{45eaea72-a293-4733-a301-8bc21405ccfe}</Project>
       <Name>Northwind.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.Util\Northwind.Utils.csproj">
+      <Project>{3ec0eb50-2de6-4073-b3e1-b2e0fa249669}</Project>
+      <Name>Northwind.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

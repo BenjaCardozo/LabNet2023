@@ -1,8 +1,8 @@
 ﻿using Northwind.Data;
 using Northwind.Logic.Application;
 using Northwind.UI.Extension;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace Northwind.UI.Presentation
 {
@@ -281,6 +281,7 @@ namespace Northwind.UI.Presentation
                 Console.WriteLine(ex.Message);
             }
         }
+
         static bool VerifyStringField(string categoryField) => categoryField.ContainsOnlyLetters();
         static bool IsValidPhoneNumber(string phone) => phone.IsValidPhoneNumber();
     }

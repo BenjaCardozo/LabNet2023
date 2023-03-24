@@ -2,11 +2,13 @@
 
 namespace Northwind.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class ErrorController : Controller
     {
+        // GET: Error
         public ActionResult Index()
         {
             return View();
         }
+
     }
 }

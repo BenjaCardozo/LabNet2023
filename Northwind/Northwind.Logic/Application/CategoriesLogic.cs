@@ -1,12 +1,9 @@
-﻿using Northwind.Data.Command;
+﻿using Northwind.Data;
+using Northwind.Data.Command;
+using Northwind.Data.Command.Interface;
 using Northwind.Data.Query.Interface;
-using Northwind.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Northwind.Data.Command.Interface;
 
 namespace Northwind.Logic.Application
 {

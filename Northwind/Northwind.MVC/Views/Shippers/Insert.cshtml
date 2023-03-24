@@ -1,0 +1,33 @@
+﻿@model Northwind.MVC.Models.ShippersViewModel
+
+@{
+    ViewBag.Title = Model == null ? "Insertar proveedor" : "Editar proveedor";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm(Model == null ? "Insert" : "Edit", "Shippers", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("error", new { @class = "text-danger" });
+
+<div class="form-horizontal">
+    <hr />
+    @Html.HiddenFor(s => s.ShipperId)
+
+    @Html.LabelFor(s => s.CompanyName)
+    @Html.TextBoxFor(s => s.CompanyName, new { @class = "form-control" })
+    @Html.ValidationMessage("CompanyName", new { @class = "text-danger" })<br />
+
+    @Html.LabelFor(s => s.Phone)
+    @Html.TextBoxFor(s => s.Phone, new { @class = "form-control" })
+    @Html.ValidationMessage("Phone", new { @class = "text-danger" })<br />
+
+    <br />
+    <div>
+        <input type="submit" class="btn btn-success" value="Guardar" />
+    </div>
+
+</div>
+}

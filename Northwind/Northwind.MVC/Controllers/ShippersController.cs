@@ -1,5 +1,6 @@
-﻿using Northwind.Data;
-using Northwind.Logic.Application;
+﻿using Northwind.MVC.Models;
+using Northwind.MVC.Service;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -7,12 +8,25 @@ namespace Northwind.MVC.Controllers
 {
     public class ShippersController : Controller
     {
+        private readonly ShippersService _service;
+        public ShippersController()
+        {
+            this._service = new ShippersService();
+        }
         // GET: Shippers
         public ActionResult Index()
         {
-            var logic = new ShippersLogic();
-            List<Shippers> shippers = logic.GetAll();
-            return View(shippers);
+            try
+            {
+                List<ShippersViewModel> shippersView = _service.GetAll();
+                return View(shippersView);
+            }
+            catch (System.Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return RedirectToAction("Index", "Error");
+            }
+            
         }
 
         // GET: Shippers/Details/5
@@ -21,48 +35,58 @@ namespace Northwind.MVC.Controllers
             return View();
         }
 
-        // GET: Shippers/Create
-        public ActionResult Create()
+        public ActionResult Insert()
         {
-            return View();
+            return View("Insert");
         }
 
         // POST: Shippers/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Insert(ShippersViewModel shippersView)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                if (!ModelState.IsValid)
+                {
+                    return View(shippersView);
+                }
+                _service.Insert(shippersView);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return RedirectToAction("Index", "Error");
             }
+                
         }
 
         // GET: Shippers/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ShippersViewModel shipperViewModel = _service.GetById(id);
+            return View("Insert",shipperViewModel);
         }
 
         // POST: Shippers/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ShippersViewModel shipperViewModel)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
+            if (!ModelState.IsValid)
             {
-                return View();
+                return View("Insert",shipperViewModel);
             }
+            _service.Edit(shipperViewModel);
+            return RedirectToAction("Index");
+
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            
         }
 
         // GET: Shippers/Delete/5
