@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Northwind.Data;
+using Northwind.Data.Command;
 using Northwind.Data.Command.Interface;
 using Northwind.Data.Query.Interface;
 using System.Collections.Generic;
@@ -31,8 +32,8 @@ namespace Northwind.Logic.Application.Tests
             var mockContext = new Mock<NorthwindContext>();
             mockContext.Setup(c => c.Categories).Returns(mockSet.Object);
 
-            var mockCommand  = new Mock<IABMGeneric<Categories>>();
-            var mockQuery = new Mock<IQueryGeneric<Categories, int>>();
+            var mockCommand  = new Mock<ABMGeneric<Categories>>();
+            var mockQuery = new Mock<CategoriesQuery>();
 
             var service = new CategoriesLogic(mockCommand.Object, mockQuery.Object);
             var blogs = service.GetAll();

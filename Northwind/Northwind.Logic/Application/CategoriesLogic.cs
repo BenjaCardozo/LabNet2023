@@ -17,7 +17,7 @@ namespace Northwind.Logic.Application
             _command = new ABMGeneric<Categories>();
             _query = new CategoriesQuery();
         }
-        public CategoriesLogic (IABMGeneric<Categories> command, IQueryGeneric<Categories, int> query)
+        public CategoriesLogic (ABMGeneric<Categories> command, CategoriesQuery query)
         {
             _command = command;
             _query = query;

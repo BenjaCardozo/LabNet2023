@@ -1,5 +1,6 @@
 ﻿using Northwind.MVC.Models;
 using Northwind.MVC.Service;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -12,7 +13,6 @@ namespace Northwind.MVC.Controllers
         {
             this._service = new CategoriesService();
         }
-        // GET: Categories
         public ActionResult Index()
         {
             try
@@ -20,82 +20,71 @@ namespace Northwind.MVC.Controllers
                 List<CategoriesViewModel> categoriesViews = _service.GetAll();
                 return View(categoriesViews);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
-                return View("Error");
+                return RedirectToAction("Index", "Error");
             }
         }
 
-        // GET: Categories/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Insert()
         {
-            return View();
+            return View("Insert");
         }
 
-        // GET: Categories/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Categories/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Insert(CategoriesViewModel categoriesViewModel)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                if(!ModelState.IsValid)
+                {
+                    return View(categoriesViewModel);
+                }
+                _service.Insert(categoriesViewModel);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return RedirectToAction("Index", "Error");
             }
         }
 
-        // GET: Categories/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            CategoriesViewModel categoriesViewModel = _service.GetById(id);
+            return View("Insert", categoriesViewModel);
         }
 
-        // POST: Categories/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(CategoriesViewModel categoriesViewModel)
         {
             try
             {
-                // TODO: Add update logic here
-
+                if (!ModelState.IsValid)
+                {
+                    return View("Insert", categoriesViewModel);
+                }
+                _service.Edit(categoriesViewModel);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return RedirectToAction("Index", "Error");
             }
         }
 
-        // GET: Categories/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Categories/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _service.Delete(id);
+                return Content("1");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Error");
             }
         }
     }

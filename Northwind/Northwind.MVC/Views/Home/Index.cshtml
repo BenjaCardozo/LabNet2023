@@ -2,21 +2,21 @@
     ViewBag.Title = "Inicio";
 }
 <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="col-sm-6 mb-3 mb-sm-0 card-presentacion">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Expedidores</h5>
                 <p class="card-text">Listado de expedidores</p>
-                @Html.ActionLink("Ver", "Index", "Shippers", null, new {@class = "btn btn-primary" })
+                @Html.ActionLink("Ver", "Index", "Shippers", null, new {@class = "btn btn-success" })
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 card-presentacion">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Categorias</h5>
                 <p class="card-text">Listado de categorias</p>
-                @Html.ActionLink("Ver", "Index", "Categories", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Ver", "Index", "Categories", null, new { @class = "btn btn-success" })
             </div>
         </div>
     </div>

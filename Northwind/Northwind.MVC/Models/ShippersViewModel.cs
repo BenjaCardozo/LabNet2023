@@ -9,7 +9,7 @@ namespace Northwind.MVC.Models
         [Required]
         [Display(Name ="Nombre de la compañia")]
         [StringLength(40,ErrorMessage ="El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "El nombre de la compañia solo debe contener letras y espacios.")]
+        [RegularExpression(@"^[a-zA-ZñÑ\s]+$", ErrorMessage = "El nombre de la compañia solo debe contener letras y espacios.")]
         public string CompanyName { get; set; }
 
         [Display(Name = "Telefono")]

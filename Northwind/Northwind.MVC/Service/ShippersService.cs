@@ -60,13 +60,25 @@ namespace Northwind.MVC.Service
                 throw;
             }
         }
+        public void Delete(int id)
+        {
+            try
+            {
+                _logic.Delete(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public ShippersViewModel MapViewModel(Shippers shippers)
         {
-            ShippersViewModel shippersView = new ShippersViewModel();
-
-            shippersView.ShipperId = shippers.ShipperID;
-            shippersView.CompanyName = shippers.CompanyName;
-            shippersView.Phone = shippers.Phone;
+            ShippersViewModel shippersView = new ShippersViewModel
+            {
+                ShipperId = shippers.ShipperID,
+                CompanyName = shippers.CompanyName,
+                Phone = shippers.Phone
+            };
             return shippersView;
         }
         public Shippers MapDomainModel(ShippersViewModel shippersView)

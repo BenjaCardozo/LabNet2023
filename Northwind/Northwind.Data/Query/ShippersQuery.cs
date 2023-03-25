@@ -47,7 +47,7 @@ namespace Northwind.Data.Query
             {
                 using (_context = new NorthwindContext())
                 {
-                    return _context.Shippers.First(s => s.ShipperID == id);
+                    return _context.Shippers.FirstOrDefault(s => s.ShipperID == id);
                 }
             }
             catch (Exception)

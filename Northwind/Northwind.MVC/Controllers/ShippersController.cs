@@ -13,7 +13,7 @@ namespace Northwind.MVC.Controllers
         {
             this._service = new ShippersService();
         }
-        // GET: Shippers
+
         public ActionResult Index()
         {
             try
@@ -21,18 +21,11 @@ namespace Northwind.MVC.Controllers
                 List<ShippersViewModel> shippersView = _service.GetAll();
                 return View(shippersView);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
                 return RedirectToAction("Index", "Error");
-            }
-            
-        }
-
-        // GET: Shippers/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            }            
         }
 
         public ActionResult Insert()
@@ -40,7 +33,6 @@ namespace Northwind.MVC.Controllers
             return View("Insert");
         }
 
-        // POST: Shippers/Create
         [HttpPost]
         public ActionResult Insert(ShippersViewModel shippersView)
         {
@@ -60,14 +52,12 @@ namespace Northwind.MVC.Controllers
                 
         }
 
-        // GET: Shippers/Edit/5
         public ActionResult Edit(int id)
         {
             ShippersViewModel shipperViewModel = _service.GetById(id);
             return View("Insert",shipperViewModel);
         }
 
-        // POST: Shippers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ShippersViewModel shipperViewModel)
@@ -89,25 +79,17 @@ namespace Northwind.MVC.Controllers
             
         }
 
-        // GET: Shippers/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Shippers/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _service.Delete(id);
+                return Content("1");
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return RedirectToAction("Index", "Error");
             }
         }
     }

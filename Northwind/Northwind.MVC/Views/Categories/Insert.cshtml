@@ -1,0 +1,34 @@
+﻿@model Northwind.MVC.Models.CategoriesViewModel
+
+@{
+    ViewBag.Title = Model == null ? "Insertar categoria" : "Editar categoria";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm(Model == null ? "Insert" : "Edit", "Categories", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("error", new { @class = "text-danger" });
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(c => c.CategoryID)
+
+        @Html.LabelFor(c => c.CategoryName)
+        @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessage("CategoryName", new { @class = "text-danger" })<br />
+
+        @Html.LabelFor(c => c.CategoryDescription)
+        @Html.TextBoxFor(c => c.CategoryDescription, new { @class = "form-control" })
+        @Html.ValidationMessage("CategoryDescription", new { @class = "text-danger" })<br />
+
+        <br />
+        <div>
+            <input type="submit" class="btn btn-success" value="Guardar" />
+        </div>
+
+    </div>
+}
+
