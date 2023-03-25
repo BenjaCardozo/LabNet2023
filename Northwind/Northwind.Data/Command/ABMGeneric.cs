@@ -6,7 +6,7 @@ namespace Northwind.Data.Command
 {
     public class ABMGeneric<T> : IABMGeneric<T> where T : class, new()
     {
-        NorthwindContext _context;
+        private NorthwindContext _context;
         public ABMGeneric(NorthwindContext context) 
         {
             _context = context;

@@ -6,7 +6,7 @@ namespace Northwind.Data.Query.Interface
 {
     public class CategoriesQuery : IQueryGeneric<Categories, int>
     {
-        NorthwindContext _context;
+        private NorthwindContext _context;
         public CategoriesQuery(NorthwindContext context)
         {
             _context = context;
