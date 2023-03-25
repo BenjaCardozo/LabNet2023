@@ -13,7 +13,7 @@ namespace Northwind.MVC.Service
 
         public CategoriesService()
         {
-            this._logic = new CategoriesLogic();
+            _logic = new CategoriesLogic();
         }
 
         public List<CategoriesViewModel> GetAll()

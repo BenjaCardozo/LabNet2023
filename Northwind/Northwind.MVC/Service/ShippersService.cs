@@ -12,7 +12,7 @@ namespace Northwind.MVC.Service
         private readonly ShippersLogic _logic;
         public ShippersService() 
         {
-            this._logic = new ShippersLogic();
+            _logic = new ShippersLogic();
         }
         public List<ShippersViewModel> GetAll()
         {

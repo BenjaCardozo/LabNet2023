@@ -11,7 +11,7 @@ namespace Northwind.MVC.Controllers
         private readonly ShippersService _service;
         public ShippersController()
         {
-            this._service = new ShippersService();
+            _service = new ShippersService();
         }
 
         public ActionResult Index()
@@ -48,8 +48,7 @@ namespace Northwind.MVC.Controllers
             catch (Exception)
             {
                 return RedirectToAction("Index", "Error");
-            }
-                
+            }                
         }
 
         public ActionResult Edit(int id)
