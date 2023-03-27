@@ -5,8 +5,8 @@ using System.Web;
 
 namespace Northwind.MVC.Models
 {
-    public class ResultsPersonajesViewModel
+    public class AllResultsViewModel
     {
-        public List<PersonajesViewModel> results { get; set; }
+        public List<ResultsViewModel> Results { get; set; }
     }
 }

@@ -97,6 +97,10 @@
       <Project>{45EAEA72-A293-4733-A301-8BC21405CCFE}</Project>
       <Name>Northwind.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Northwind.Util\Northwind.Utils.csproj">
+      <Project>{3EC0EB50-2DE6-4073-B3E1-B2E0FA249669}</Project>
+      <Name>Northwind.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

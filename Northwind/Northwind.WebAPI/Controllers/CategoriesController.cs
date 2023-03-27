@@ -9,17 +9,16 @@ using System.Web.Http.Description;
 
 namespace Northwind.WebAPI.Controllers
 {
-    public class ShippersController : ApiController
+    public class CategoriesController : ApiController
     {
-        private readonly ShippersService _service;
-
-        public ShippersController()
+        private readonly CategoriesService _service;
+        public CategoriesController() 
         {
-            _service = new ShippersService();
+            _service = new CategoriesService();
         }
         [HttpGet]
-        [Route("api/Shippers")]
-        public IHttpActionResult GetShippers()
+        [Route("api/Categories")]
+        public IHttpActionResult GetCategories()
         {
             try
             {
@@ -36,14 +35,14 @@ namespace Northwind.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/Shippers/{id}")]
-        [ResponseType(typeof(ShippersViewModel))]
-        public IHttpActionResult GetShippers(int id)
+        [Route("api/Categories/{id}")]
+        [ResponseType(typeof(CategoriesViewModel))]
+        public IHttpActionResult GetCategories(int id)
         {
             try
             {
-                ShippersViewModel shippers = _service.GetById(id);
-                return Ok(shippers);
+                CategoriesViewModel categories = _service.GetById(id);
+                return Ok(categories);
             }
             catch (MyException ex)
             {
@@ -53,22 +52,21 @@ namespace Northwind.WebAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
         }
 
         [HttpPut]
-        [Route("api/Shippers/{id}")]
-        public IHttpActionResult UpdateShipper(int id, ShippersViewModel shippers)
+        [Route("api/Categories/{id}")]
+        public IHttpActionResult UpdateCategory(int id, CategoriesViewModel categories)
         {
             try
             {
-                shippers.ShipperId = id;
-                if(shippers == null)
+                categories.CategoryID= id;
+                if (categories == null)
                 {
-                    throw new MyException("El expedidor no existe.");
+                    throw new MyException("La categoria no existe");
                 }
-                _service.Edit(shippers);
-                return Ok(shippers);
+                _service.Edit(categories);
+                return Ok(categories);
             }
             catch (MyException ex)
             {
@@ -90,9 +88,8 @@ namespace Northwind.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
         [HttpPost]
-        public IHttpActionResult PostShippers(ShippersViewModel shippers)
+        public IHttpActionResult PostCategories (CategoriesViewModel categories)
         {
             try
             {
@@ -100,8 +97,8 @@ namespace Northwind.WebAPI.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-                _service.Insert(shippers);
-                return CreatedAtRoute("DefaultApi", new { id = shippers.ShipperId }, shippers);
+                _service.Insert(categories);
+                return CreatedAtRoute("DefaultApi", new {id = categories.CategoryID}, categories);
             }
             catch (MyException ex)
             {
@@ -111,18 +108,16 @@ namespace Northwind.WebAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
         }
-
         [HttpDelete]
-        [Route("api/Shippers/{id}")]
-        [ResponseType(typeof(ShippersViewModel))]
-        public IHttpActionResult DeleteShippers(int id)
+        [Route("api/Categories/{id}")]
+        [ResponseType(typeof(CategoriesViewModel))]
+        public IHttpActionResult DeleteCategories(int id)
         {
             try
             {
-                ShippersViewModel shippers = _service.GetById(id);
-                _service.Delete(id);
+                CategoriesViewModel categories = _service.GetById(id);
+                _service.Delete(id); 
                 return StatusCode(HttpStatusCode.NoContent);
             }
             catch (MyException ex)
@@ -132,7 +127,8 @@ namespace Northwind.WebAPI.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }            
+            }
         }
+        
     }
 }

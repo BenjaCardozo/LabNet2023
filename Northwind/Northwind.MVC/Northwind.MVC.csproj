@@ -136,10 +136,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllResultsViewModel.cs" />
     <Compile Include="Models\CategoriesViewModel.cs" />
     <Compile Include="Models\LocationOriginViewModel.cs" />
     <Compile Include="Models\PersonajesViewModel.cs" />
-    <Compile Include="Models\ResultsPersonajesViewModel.cs" />
+    <Compile Include="Models\ResultsViewModel.cs" />
     <Compile Include="Models\ShippersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CategoriesService.cs" />
@@ -288,6 +289,10 @@
     <ProjectReference Include="..\Northwind.Logic\Northwind.Logic.csproj">
       <Project>{45EAEA72-A293-4733-A301-8BC21405CCFE}</Project>
       <Name>Northwind.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.Util\Northwind.Utils.csproj">
+      <Project>{3EC0EB50-2DE6-4073-B3E1-B2E0FA249669}</Project>
+      <Name>Northwind.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

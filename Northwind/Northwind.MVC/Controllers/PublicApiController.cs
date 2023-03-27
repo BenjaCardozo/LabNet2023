@@ -1,6 +1,7 @@
 ﻿using Northwind.MVC.Models;
 using Northwind.MVC.Service;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -17,7 +18,7 @@ namespace Northwind.MVC.Controllers
         {
             try
             {
-                ResultsPersonajesViewModel personajes = await _service.GetAllAsync();
+                AllResultsViewModel personajes = await _service.GetAllAsync();
                 return View(personajes);
             }
             catch (Exception ex)
@@ -35,8 +36,9 @@ namespace Northwind.MVC.Controllers
                 PersonajesViewModel personaje = await _service.GetByIDAsync(id);
                 return View(personaje);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
             }
         }

@@ -1,6 +1,7 @@
 ﻿using Northwind.Data;
 using Northwind.Logic.Application;
 using Northwind.MVC.Models;
+using Northwind.Util.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,9 +47,12 @@ namespace Northwind.MVC.Service
             {
                 _logic.Add(MapDomainModel(categorieViewModel));
             }
+            catch (MyException)
+            {
+                throw;
+            }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -58,9 +62,12 @@ namespace Northwind.MVC.Service
             {
                 _logic.Update(MapDomainModel(categorieViewModel));
             }
+            catch (MyException)
+            {
+                throw;
+            }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -71,9 +78,12 @@ namespace Northwind.MVC.Service
             {
                 _logic.Delete(id);
             }
+            catch (MyException)
+            {
+                throw;
+            }
             catch (Exception)
             {
-
                 throw;
             }
         }

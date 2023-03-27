@@ -54,6 +54,10 @@
       <Project>{f8039329-5827-4068-a858-62021e261c57}</Project>
       <Name>Northwind.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Northwind.Util\Northwind.Utils.csproj">
+      <Project>{3EC0EB50-2DE6-4073-B3E1-B2E0FA249669}</Project>
+      <Name>Northwind.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

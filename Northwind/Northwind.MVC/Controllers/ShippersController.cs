@@ -1,5 +1,6 @@
 ﻿using Northwind.MVC.Models;
 using Northwind.MVC.Service;
+using Northwind.Util.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -21,11 +22,16 @@ namespace Northwind.MVC.Controllers
                 List<ShippersViewModel> shippersView = _service.GetAll();
                 return View(shippersView);
             }
+            catch (MyException ex)
+            {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
+                return RedirectToAction("Index", "Error");
+            }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = ex.Message;
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
                 return RedirectToAction("Index", "Error");
-            }            
+            }
         }
 
         public ActionResult Insert()
@@ -40,15 +46,21 @@ namespace Northwind.MVC.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(shippersView);
+                    throw new MyException("No se pudo agregar el expedidor.");
                 }
                 _service.Insert(shippersView);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (MyException ex)
             {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
                 return RedirectToAction("Index", "Error");
-            }                
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
+                return RedirectToAction("Index", "Error");
+            }
         }
 
         public ActionResult Edit(int id)
@@ -64,18 +76,24 @@ namespace Northwind.MVC.Controllers
             try
             {
             if (!ModelState.IsValid)
-            {
-                return View("Insert",shipperViewModel);
-            }
+                {
+                    throw new MyException("No se pudo editar el expedidor.");
+                }
             _service.Edit(shipperViewModel);
             return RedirectToAction("Index");
 
             }
-            catch (Exception)
+            catch (MyException ex)
             {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
                 return RedirectToAction("Index", "Error");
             }
-            
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
+                return RedirectToAction("Index", "Error");
+            }
+
         }
 
         [HttpPost]
@@ -86,8 +104,14 @@ namespace Northwind.MVC.Controllers
                 _service.Delete(id);
                 return Content("1");
             }
-            catch (Exception)
+            catch (MyException ex)
             {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
+                return RedirectToAction("Index", "Error");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Ha ocurrido un error" + ex.Message;
                 return RedirectToAction("Index", "Error");
             }
         }

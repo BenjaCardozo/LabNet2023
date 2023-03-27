@@ -174,13 +174,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Northwind\Data\Context\NorthwindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -256,6 +257,10 @@
     <ProjectReference Include="..\Northwind.Logic\Northwind.Logic.csproj">
       <Project>{45EAEA72-A293-4733-A301-8BC21405CCFE}</Project>
       <Name>Northwind.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.Util\Northwind.Utils.csproj">
+      <Project>{3EC0EB50-2DE6-4073-B3E1-B2E0FA249669}</Project>
+      <Name>Northwind.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

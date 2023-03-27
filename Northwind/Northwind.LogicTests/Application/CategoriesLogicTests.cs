@@ -3,8 +3,11 @@ using Moq;
 using Northwind.Data;
 using Northwind.Data.Command;
 using Northwind.Data.Query.Interface;
+using Northwind.Util.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace Northwind.Logic.Application.Tests
@@ -12,6 +15,27 @@ namespace Northwind.Logic.Application.Tests
     [TestClass()]
     public class CategoriesLogicTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(MyException))]
+        public void Add_Category_With_Error()
+        {
+            // Arrange
+            var mockQuery = new Mock<CategoriesQuery>();
+            mockQuery.Setup(x => x.LastID()).Throws(new Exception("Database error"));
+            mockQuery.Setup(x => x.ExistID(It.IsAny<int>())).Returns(false);
+
+            var mockCommand = new Mock<ABMGeneric<Categories>>();
+
+            var category = new Categories() { CategoryName = "Category 1" };
+            var service = new CategoriesLogic(mockCommand.Object, mockQuery.Object);
+
+            // Act
+            service.Add(category);
+
+            // Assert
+            // Expects an exception of type MyException to be thrown
+        }
+
         [TestMethod]
         public void GetAllDevuelveMasdeunElemento()
         {
@@ -42,5 +66,6 @@ namespace Northwind.Logic.Application.Tests
             Assert.AreEqual("BBB", blogs[1].CategoryName);
             Assert.AreEqual("ZZZ", blogs[2].CategoryName);
         }
+
     }
 }

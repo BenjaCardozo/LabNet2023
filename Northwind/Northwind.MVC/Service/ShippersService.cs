@@ -1,6 +1,7 @@
 ﻿using Northwind.Data;
 using Northwind.Logic.Application;
 using Northwind.MVC.Models;
+using Northwind.Util.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,11 @@ namespace Northwind.MVC.Service
             {
                 _logic.Add(MapDomainModel(shippersView));
             }
+            catch (MyException)
+            {
+                throw;
+            }
+
             catch (Exception)
             {
                 throw;
@@ -54,6 +60,10 @@ namespace Northwind.MVC.Service
             try
             {
                 _logic.Update(MapDomainModel(shippersView));
+            }
+            catch (MyException)
+            {
+                throw;
             }
             catch (Exception)
             {
@@ -67,6 +77,10 @@ namespace Northwind.MVC.Service
             {
                 _logic.Delete(id);
             }
+            catch (MyException)
+            {
+                throw;
+            }
             catch (Exception)
             {
                 throw;
@@ -76,6 +90,10 @@ namespace Northwind.MVC.Service
         {
             try
             {
+                if (shippers == null)
+                {
+                    throw new MyException("El expedidor esta vacío o no existe.");
+                }
                 ShippersViewModel shippersView = new ShippersViewModel
                 {
                     ShipperId = shippers.ShipperID,
@@ -83,6 +101,10 @@ namespace Northwind.MVC.Service
                     Phone = shippers.Phone
                 };
                 return shippersView;
+            }
+            catch (MyException)
+            {
+                throw;
             }
             catch (Exception)
             {
@@ -94,6 +116,10 @@ namespace Northwind.MVC.Service
         {
             try
             {
+                if (shippersView == null)
+                {
+                    throw new MyException("El expedidor esta vacío o no existe");
+                }
                 Shippers shippers = new Shippers();
 
                 if (shippersView.ShipperId == null)
@@ -108,11 +134,15 @@ namespace Northwind.MVC.Service
                 shippers.Phone = shippersView.Phone;
                 return shippers;
             }
+            catch (MyException)
+            {
+                throw;
+            }
             catch (Exception)
             {
                 throw;
             }
-            
+
         }
     }
 }

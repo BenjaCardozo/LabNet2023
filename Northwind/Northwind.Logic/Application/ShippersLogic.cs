@@ -3,6 +3,7 @@ using Northwind.Data.Command;
 using Northwind.Data.Command.Interface;
 using Northwind.Data.Query;
 using Northwind.Data.Query.Interface;
+using Northwind.Util.Exceptions;
 using System;
 using System.Collections.Generic;
 
@@ -38,7 +39,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al agregar la expedidor.");
             }
         }
         public void Delete(int shipperID)
@@ -52,12 +53,16 @@ namespace Northwind.Logic.Application
                 }
                 else
                 {
-                    throw new Exception("El expedidor que desea eliminar no existe.");
+                    throw new MyException("El expedidor que desea eliminar no existe.");
                 }
+            }
+            catch (MyException)
+            {
+                throw;
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al eliminar el expedidor.");
             }
         }
         public List<Shippers> GetAll()
@@ -68,7 +73,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al obtener todas los expedidores.");
             }
         }
         public Shippers GetByID(int id)
@@ -79,7 +84,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al obtener el expedidor.");
             }
         }
         public void Update(Shippers updateShipper)
@@ -95,8 +100,12 @@ namespace Northwind.Logic.Application
                 }
                 else
                 {
-                    throw new Exception("El/la expedidor/expedidora que desea modificar no existe.");
+                    throw new MyException("El/la expedidor/expedidora que desea modificar no existe.");
                 }
+            }
+            catch (MyException)
+            {
+                throw;
             }
             catch (Exception)
             {
@@ -111,7 +120,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al obtener el expedidor por nombre de la compañia.");
             }
         }
     }

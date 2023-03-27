@@ -1,4 +1,4 @@
-﻿@model Northwind.MVC.Models.ResultsPersonajesViewModel
+﻿@model Northwind.MVC.Models.AllResultsViewModel
 @{
     ViewBag.Title = "Rick & Morty";
 }
@@ -6,18 +6,20 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                @foreach (var personaje in Model.results)
+                @foreach (var results in Model.Results)
                 {
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="@personaje.image" class="bd-placeholder-img rounded-circle" alt="Imagen Personaje">
-                            <div class="card-body">
-                                <h5 class="card-title">@personaje.name</h5>
-                                <a href="@Url.Action("CharacterProfile", "PublicApi", new { id = personaje.id })" class="btn btn-outline-dark">Ver Perfil</a>
+                    foreach (var personaje in results.results)
+                    {
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="@personaje.image" class="bd-placeholder-img rounded-circle" alt="Imagen Personaje">
+                                <div class="card-body">
+                                    <h5 class="card-title">@personaje.name</h5>
+                                    <a href="@Url.Action("CharacterProfile", "PublicApi", new { id = personaje.id })" class="btn btn-outline-dark">Ver Perfil</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    }
                 }
         </div>
     </div>

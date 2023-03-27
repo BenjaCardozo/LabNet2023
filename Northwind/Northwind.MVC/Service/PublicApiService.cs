@@ -11,13 +11,25 @@ namespace Northwind.MVC.Service
     {
 		private readonly string url = "https://rickandmortyapi.com/api/" ;
 
-        public async Task<ResultsPersonajesViewModel> GetAllAsync()
+        public async Task<AllResultsViewModel> GetAllAsync()
 		{
 			try
 			{
                 var json = await CallApiAsync("character/");
+                List<ResultsViewModel> results = new List<ResultsViewModel>();
+                results.Add(ParsePersonajes(json));
+                
+                for (int i = 2; i < 8; i++)
+                {
+                    json = await CallApiAsync("character/?page="+i);
+                    results.Add(ParsePersonajes(json));
+                }
 
-                return ParsePersonajes(json);
+                AllResultsViewModel allResults = new AllResultsViewModel
+                {
+                    Results = results,
+                };
+                return allResults;
             }
 			catch (Exception)
 			{
@@ -48,11 +60,11 @@ namespace Northwind.MVC.Service
 				throw;
 			}
         }
-        public ResultsPersonajesViewModel ParsePersonajes(string json)
+        public ResultsViewModel ParsePersonajes(string json)
         {
             try
             {
-                ResultsPersonajesViewModel results = JsonConvert.DeserializeObject<ResultsPersonajesViewModel>(json);
+                ResultsViewModel results = JsonConvert.DeserializeObject<ResultsViewModel>(json);
                 return results;
             }
             catch (Exception)

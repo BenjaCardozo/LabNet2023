@@ -2,6 +2,7 @@
 using Northwind.Data.Command;
 using Northwind.Data.Command.Interface;
 using Northwind.Data.Query.Interface;
+using Northwind.Util.Exceptions;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace Northwind.Logic.Application
     {
         private IABMGeneric<Categories> _command;
         private IQueryGeneric<Categories, int> _query;
-
+        
         public CategoriesLogic() 
         {
             _command = new ABMGeneric<Categories>();
@@ -38,7 +39,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al agregar la categoria.");
             }
         }
         public void Update(Categories updateCategory)
@@ -53,12 +54,16 @@ namespace Northwind.Logic.Application
                     _command.Update(existingCategory);
                 } else
                 {
-                    throw new Exception("La categoria que desea modificar no existe.");
+                    throw new MyException("La categoria que desea modificar no existe.");
                 }
+            }
+            catch (MyException)
+            {
+                throw;
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al modificar la categoria.");
             }
         }
         public void Delete(int categoryId)
@@ -72,12 +77,16 @@ namespace Northwind.Logic.Application
                 }
                 else
                 {
-                    throw new Exception("La categoria que desea eliminar no existe.");
+                    throw new MyException("La categoria que desea eliminar no existe.");
                 }
+            }
+            catch (MyException)
+            {
+                throw;
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al eliminar la categoria.");
             }
         }
         public List<Categories> GetAll()
@@ -88,7 +97,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al obtener todas las categorias.");
             }
         }
         public Categories GetByID(int categoryId)
@@ -99,7 +108,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al obtener la categoria.");
             }
         }
         public List<Categories> GetByString(string str)
@@ -110,7 +119,7 @@ namespace Northwind.Logic.Application
             }
             catch (Exception)
             {
-                throw;
+                throw new MyException("Error al obtener la categoria por nombre.");
             }
         }
     }

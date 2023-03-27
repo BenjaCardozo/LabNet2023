@@ -40,7 +40,7 @@ namespace Northwind.Data.Query.Interface
                 throw;
             }
         }
-        public bool ExistID(int id)
+        public virtual bool ExistID(int id)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Northwind.Data.Query.Interface
                 throw;
             }
         }
-        public int LastID()
+        public virtual int LastID()
         {
             try
             {
