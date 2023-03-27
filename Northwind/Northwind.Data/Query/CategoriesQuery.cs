@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Northwind.Data.Query.Interface
 {
     public class CategoriesQuery : IQueryGeneric<Categories, int>
     {
-        private NorthwindContext _context;
+        private readonly NorthwindContext _context;
         public CategoriesQuery(NorthwindContext context)
         {
             _context = context;
         }
-        public CategoriesQuery() { }
+        public CategoriesQuery() 
+        {
+            _context = new NorthwindContext();
+        }
         public List<Categories> GetAll()
         {
             try
             {
-                using (_context = new NorthwindContext())
-                {
-                    return _context.Categories.ToList();
-                }
+                List<Categories> categories = _context.Categories.ToList();
+                return categories;
             }
             catch (Exception)
             {
@@ -30,10 +32,8 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (_context = new NorthwindContext())
-                {
-                    return _context.Categories.Find(id);
-                }
+                Categories category = _context.Categories.FirstOrDefault(c => c.CategoryID == id);
+                return category;
             }
             catch (Exception)
             {
@@ -44,10 +44,8 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (_context = new NorthwindContext())
-                {
-                    return _context.Categories.Any(c => c.CategoryID == id);
-                }
+                bool existID = _context.Categories.Any(c => c.CategoryID == id);
+                return existID;
             }
             catch (Exception)
             {
@@ -58,10 +56,8 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (_context = new NorthwindContext())
-                {
-                    return _context.Categories.Max(c=> c.CategoryID);
-                }
+                int lastID = _context.Categories.Max(c=> c.CategoryID);
+                return lastID;
             }
             catch (Exception)
             {
@@ -72,12 +68,10 @@ namespace Northwind.Data.Query.Interface
         {
             try
             {
-                using (_context = new NorthwindContext())
-                {
-                    return _context.Categories
-                        .Where(c => c.CategoryName.Contains(str))
-                        .ToList();
-                }
+                List<Categories> categories = _context.Categories
+                    .Where(c => c.CategoryName.Contains(str))
+                    .ToList();
+                return categories;
             }
             catch (Exception)
             {

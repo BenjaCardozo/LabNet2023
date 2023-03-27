@@ -1,0 +1,24 @@
+﻿@model Northwind.MVC.Models.PersonajesViewModel
+@{
+    ViewBag.Title = Model.name ;
+}
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">@Model.name</h2>
+        <p class="lead">Status: @Model.status</p>
+        <p class="lead">Specie: @Model.species</p>
+        @if (!Model.type.IsEmpty())
+        {
+            <p class="lead">Gender: @Model.type</p>
+        }
+        <p class="lead">Gender: @Model.gender</p>
+        <p class="lead">Origin: @Model.origin.Name</p>
+        <p class="lead">Location: @Model.location.Name</p>
+        <p class="lead">Created: @Model.created.ToString("dd/MM/yy")</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img rounded-circle shadow-lg" width="500" height="500" src="@Model.image" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+    </div>
+</div>
+
+

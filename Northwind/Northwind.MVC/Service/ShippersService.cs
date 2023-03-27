@@ -4,6 +4,7 @@ using Northwind.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Northwind.MVC.Service
 {
@@ -73,29 +74,45 @@ namespace Northwind.MVC.Service
         }
         public ShippersViewModel MapViewModel(Shippers shippers)
         {
-            ShippersViewModel shippersView = new ShippersViewModel
+            try
             {
-                ShipperId = shippers.ShipperID,
-                CompanyName = shippers.CompanyName,
-                Phone = shippers.Phone
-            };
-            return shippersView;
+                ShippersViewModel shippersView = new ShippersViewModel
+                {
+                    ShipperId = shippers.ShipperID,
+                    CompanyName = shippers.CompanyName,
+                    Phone = shippers.Phone
+                };
+                return shippersView;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
         public Shippers MapDomainModel(ShippersViewModel shippersView)
         {
-            Shippers shippers = new Shippers();
+            try
+            {
+                Shippers shippers = new Shippers();
 
-            if (shippersView.ShipperId == null)
-            {
-                shippers.ShipperID = _logic.GetAll().Select(s => s.ShipperID).Last();
+                if (shippersView.ShipperId == null)
+                {
+                    shippers.ShipperID = _logic.GetAll().Select(s => s.ShipperID).Last();
+                }
+                else
+                {
+                   shippers.ShipperID = (int)shippersView.ShipperId;
+                }            
+                shippers.CompanyName = shippersView.CompanyName;
+                shippers.Phone = shippersView.Phone;
+                return shippers;
             }
-            else
+            catch (Exception)
             {
-               shippers.ShipperID = (int)shippersView.ShipperId;
-            }            
-            shippers.CompanyName = shippersView.CompanyName;
-            shippers.Phone = shippersView.Phone;
-            return shippers;
+                throw;
+            }
+            
         }
     }
 }
