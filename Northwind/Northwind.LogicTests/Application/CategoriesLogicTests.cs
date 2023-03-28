@@ -7,7 +7,6 @@ using Northwind.Util.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace Northwind.Logic.Application.Tests
@@ -37,6 +36,28 @@ namespace Northwind.Logic.Application.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(MyException))]
+        public void Add_Category_With_Existing_ID()
+        {
+            // Arrange
+            var mockQuery = new Mock<CategoriesQuery>();
+            mockQuery.Setup(x => x.LastID()).Returns(2);
+            mockQuery.Setup(x => x.ExistID(2)).Returns(true);
+
+            var mockCommand = new Mock<ABMGeneric<Categories>>();
+
+            var category = new Categories() { CategoryID = 2, CategoryName = "Category 1" };
+            var service = new CategoriesLogic(mockCommand.Object, mockQuery.Object);
+
+            // Act
+            service.Add(category);
+
+            // Assert
+            // Expects an exception of type MyException to be thrown
+        }
+
+
+        [TestMethod]
         public void GetAllDevuelveMasdeunElemento()
         {
             var data = new List<Categories>
@@ -55,7 +76,7 @@ namespace Northwind.Logic.Application.Tests
             var mockContext = new Mock<NorthwindContext>();
             mockContext.Setup(c => c.Categories).Returns(mockSet.Object);
 
-            var mockCommand  = new Mock<ABMGeneric<Categories>>(mockContext.Object);
+            var mockCommand = new Mock<ABMGeneric<Categories>>(mockContext.Object);
             var mockQuery = new Mock<CategoriesQuery>(mockContext.Object);
 
             var service = new CategoriesLogic(mockCommand.Object, mockQuery.Object);

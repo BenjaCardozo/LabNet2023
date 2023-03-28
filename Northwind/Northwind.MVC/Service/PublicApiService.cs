@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Northwind.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -11,25 +12,17 @@ namespace Northwind.MVC.Service
     {
 		private readonly string url = "https://rickandmortyapi.com/api/" ;
 
-        public async Task<AllResultsViewModel> GetAllAsync()
+        public async Task<ResultsViewModel> GetPageAsync(int page)
 		{
 			try
 			{
-                var json = await CallApiAsync("character/");
-                List<ResultsViewModel> results = new List<ResultsViewModel>();
-                results.Add(ParsePersonajes(json));
-                
-                for (int i = 2; i < 8; i++)
+                var json = await CallApiAsync("character?page=" + page);
+                while (!IsValidJson(json))
                 {
-                    json = await CallApiAsync("character/?page="+i);
-                    results.Add(ParsePersonajes(json));
+                    json = await CallApiAsync("character?page=" + page);
                 }
-
-                AllResultsViewModel allResults = new AllResultsViewModel
-                {
-                    Results = results,
-                };
-                return allResults;
+                ResultsViewModel results = (ParsePersonajes(json));
+                return results;
             }
 			catch (Exception)
 			{
@@ -41,7 +34,12 @@ namespace Northwind.MVC.Service
             try
             {
                 var json = await CallApiAsync("character/" + id);
-                return ParsePersonaje(json);
+                while (!IsValidJson(json))
+                {
+                    json = await CallApiAsync("character/" + id);
+                }
+                PersonajesViewModel personaje = ParsePersonaje(json);
+                return personaje;
             }
             catch (Exception)
             {
@@ -85,6 +83,18 @@ namespace Northwind.MVC.Service
                 throw;
             }
             
+        }
+        public bool IsValidJson(string json)
+        {
+            try
+            {
+                JToken.Parse(json);
+                return true;
+            }
+            catch (JsonReaderException)
+            {
+                return false;
+            }
         }
     }
 }

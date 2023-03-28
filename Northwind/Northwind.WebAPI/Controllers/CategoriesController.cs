@@ -88,7 +88,10 @@ namespace Northwind.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost]
+        [Route("api/Categories", Name = "PostCategories")]
+        [ResponseType(typeof(CategoriesViewModel))]
         public IHttpActionResult PostCategories (CategoriesViewModel categories)
         {
             try
@@ -98,7 +101,7 @@ namespace Northwind.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
                 _service.Insert(categories);
-                return CreatedAtRoute("DefaultApi", new {id = categories.CategoryID}, categories);
+                return CreatedAtRoute("PostCategories", new {id = categories.CategoryID}, categories);
             }
             catch (MyException ex)
             {

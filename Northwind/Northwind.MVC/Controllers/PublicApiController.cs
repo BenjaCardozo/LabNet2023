@@ -14,11 +14,12 @@ namespace Northwind.MVC.Controllers
         {
             _service = new PublicApiService();
         }
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int page)
         {
             try
             {
-                AllResultsViewModel personajes = await _service.GetAllAsync();
+                ViewBag.CurrentPage = page;
+                ResultsViewModel personajes = await _service.GetPageAsync(page);                               
                 return View(personajes);
             }
             catch (Exception ex)

@@ -1,26 +1,133 @@
-﻿@model Northwind.MVC.Models.AllResultsViewModel
+﻿@model Northwind.MVC.Models.ResultsViewModel
+    <style>
+        .pagination {
+            margin: 0;
+        }
+
+            .pagination li a {
+                color: black;
+                font-size: 16px;
+            }
+
+            .pagination li.active a {
+                background-color: black;
+                color: white;
+            }
+
+            .pagination li.disabled a {
+                color: gray;
+                cursor: not-allowed;
+            }
+
+            .pagination li a:hover {
+                background-color: #f5f5f5;
+            }
+    </style>
 @{
     ViewBag.Title = "Rick & Morty";
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = 42;
+    int maxPagesToShow = 5;
+    int startPage = Math.Max(currentPage - (maxPagesToShow / 2), 1);
+    int endPage = Math.Min(startPage + maxPagesToShow - 1, totalPages);
 }
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = currentPage - 1 })">Previous</a>
+        </li>
+        @if (startPage > 1)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = 1})">1</a></li>
+        }
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = i })">@i</a>
+            </li>
+        }
+        @if (endPage < totalPages)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = 42})">42</a></li>
+        }
+        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = currentPage + 1,})">Next</a>
+        </li>
+    </ul>
+</nav>
 
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                @foreach (var results in Model.Results)
-                {
-                    foreach (var personaje in results.results)
-                    {
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <img src="@personaje.image" class="bd-placeholder-img rounded-circle" alt="Imagen Personaje">
-                                <div class="card-body">
-                                    <h5 class="card-title">@personaje.name</h5>
-                                    <a href="@Url.Action("CharacterProfile", "PublicApi", new { id = personaje.id })" class="btn btn-outline-dark">Ver Perfil</a>
+            @foreach (var personaje in Model.results)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="@personaje.image" class="btn btn-outline-warning bd-placeholder-img rounded-circle shadow-lg" alt="@personaje.name" data-bs-toggle="modal" data-bs-target="#imageModal_@personaje.id">
+                        <div class="card-body">
+                            <h5 class="card-title">@personaje.name</h5>
+                            <a href="@Url.Action("CharacterProfile", "PublicApi", new { id = personaje.id })" class="btn btn-outline-dark">Ver Perfil</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="imageModal_@personaje.id" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header border-0">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row g-0">
+                                    <div class="col-md-5">
+                                        <img src="@personaje.image" class="img-fluid rounded-start rounded-circle shadow-lg img-thumbnai" alt="@personaje.name">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="modal-text">
+                                            <h2 class="modal-title fw-bold mb-3" id="imageModalLabel">@personaje.name</h2>
+                                            <p class="lead">Status: @personaje.status</p>
+                                            <p class="lead">Specie: @personaje.species</p>
+                                            <p class="lead">Gender: @personaje.gender</p>
+                                            <p class="lead">Origin: @personaje.origin.Name</p>
+                                            <p class="lead">Location: @personaje.location.Name</p>
+                                            <p class="lead">Created: @personaje.created.ToString("dd/MM/yy")</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="modal-footer justify-content-center border-0">
+                                <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </div>
-                    }
-                }
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = currentPage - 1 })">Previous</a>
+        </li>
+        @if (startPage > 1)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = 1})">1</a></li>
+        }
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = i })">@i</a>
+            </li>
+        }
+        @if (endPage < totalPages)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = 42})">42</a></li>
+        }
+        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", "PublicApi", new { page = currentPage + 1,})">Next</a>
+        </li>
+    </ul>
+</nav>

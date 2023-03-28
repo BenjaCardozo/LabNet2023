@@ -92,6 +92,8 @@ namespace Northwind.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("api/Shippers", Name = "PostShippers")]
+        [ResponseType(typeof(ShippersViewModel))]
         public IHttpActionResult PostShippers(ShippersViewModel shippers)
         {
             try
@@ -101,7 +103,7 @@ namespace Northwind.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
                 _service.Insert(shippers);
-                return CreatedAtRoute("DefaultApi", new { id = shippers.ShipperId }, shippers);
+                return CreatedAtRoute("PostShippers", new { controller ="Categories", id = shippers.ShipperId }, shippers);
             }
             catch (MyException ex)
             {

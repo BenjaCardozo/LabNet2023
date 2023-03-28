@@ -12,7 +12,7 @@
             <img class="bd-placeholder-img" width="80%" height="80%" src="~/Image/rickymortybanner.png" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)" /></img>
             <div class="container">
                 <div class="carousel-caption">
-                    <p>@Html.ActionLink("Ver Api", "Index", "PublicApi", null, new { @class = "btn btn-lg btn-outline-light" })</p>
+                    <p>@Html.ActionLink("Ver Api", "Index", "PublicApi", new { page = 1 }, new { @class = "btn btn-lg btn-outline-light" })</p>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Expedidores</h5>
                             <p class="card-text">Listado de expedidores</p>
-                            @Html.ActionLink("Ver", "Index", "Shippers", null, new { @class = "btn btn-outline-success" })
+                            @Html.ActionLink("Ver", "Index", "Shippers",null, new { @class = "btn btn-outline-success" })
                         </div>
                     </div>
                 </div>

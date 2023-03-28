@@ -7,18 +7,11 @@
         <h2 class="featurette-heading fw-normal lh-1">@Model.name</h2>
         <p class="lead">Status: @Model.status</p>
         <p class="lead">Specie: @Model.species</p>
-        @if (!Model.type.IsEmpty())
-        {
-            <p class="lead">Gender: @Model.type</p>
-        }
         <p class="lead">Gender: @Model.gender</p>
         <p class="lead">Origin: @Model.origin.Name</p>
         <p class="lead">Location: @Model.location.Name</p>
         <p class="lead">Created: @Model.created.ToString("dd/MM/yy")</p>
     </div>
-    @*<button type="button" class="rounded-circle shadow-lg" width="500" height="500" data-bs-toggle="modal" data-bs-target="#imageModal">
-            <img class="bd-placeholder-img rounded mx-auto d-block img-thumbnail rounded-circle" width="500" height="500" src="@Model.image" preserveAspectRatio="xMidYMid slice" focusable="false" />
-        </button>*@
     <div class="text-center">
         <button type="button" class="btn btn-outline-light shadow-lg" data-bs-toggle="modal" data-bs-target="#imageModal">
             <img class="rounded-circle shadow-lg img-thumbnail" src="@Model.image" alt="@Model.name" width="200" height="200" />
