@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'NorthwindVista';
+  longText = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum dicta sunt, ratione consectetur in ipsum ex libero voluptatem amet sapiente odio quidem consequuntur debitis eum, aspernatur nesciunt sint cumque enim?';
+
+  mostrar = true;
+  frase: any = {
+    mensaje: 'El Doc está vivo!',
+    autor: 'Marty'
+  }
+  title = 'LabNet 2023';
 }
