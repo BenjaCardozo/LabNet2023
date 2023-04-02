@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ShippersService } from 'src/app/shared/service/northwind/shippers/shippers.service';
+import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
 import { ShippersRoutingModule } from './shippers-routing.module';
 import { ShippersComponent } from './shippers.component';
+import { ShippersFormComponent } from '../shippers/child/shippersForm/shippersForm.component';
 
 
 
 @NgModule({
   declarations: [
-    ShippersComponent
+    ShippersFormComponent,
+    ShippersComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
-    BrowserModule,
     ShippersRoutingModule,
-    FormsModule
+    BrowserAnimationsModule,
   ],
-  providers: [ShippersService ]
+  providers: [ShippersService ],
+  bootstrap: [ShippersComponent]
 })
 export class ShippersModule { }

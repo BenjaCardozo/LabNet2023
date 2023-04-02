@@ -8,22 +8,23 @@ import { AppComponent } from './app.component';
 
 import { NavBarComponent } from './components/navBar/navBar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
-import { ShippersRoutingModule } from './modules/northwind/shippers/shippers-routing.module';
-import { ShippersComponent } from './modules/northwind/shippers/shippers.component';
+import { ShippersModule } from './modules/northwind/shippers/shippers.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    ShippersRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ShippersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,10 +5,12 @@ using System;
 using System.Data.Entity.Infrastructure;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace Northwind.WebAPI.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class ShippersController : ApiController
     {
         private readonly ShippersService _service;
@@ -54,6 +56,33 @@ namespace Northwind.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
             
+        }
+
+        [HttpGet]
+        [Route("api/Shippers/GetShippersByString/{companyName}")]
+        public IHttpActionResult GetShippersByString(string companyName)
+        {
+            try
+            {
+                if(companyName != null)
+                {
+                    return Ok(_service.GetByString(companyName));
+                }
+                else
+                {
+                    return BadRequest("Ingrese un valor por favor.");
+                }
+                
+            }
+            catch (MyException)
+            {
+                return BadRequest("No se ha encontrado expedidores.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpPut]

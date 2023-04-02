@@ -1,0 +1,50 @@
+.img-hover:hover {
+  opacity: 0.7;
+}
+.btn-rickmorty {
+  color: #fff;
+  background-color: #00A693;
+  border-color: #00A693;
+  &:hover {
+    color: #fff;
+    background-color: #00568D;
+    border-color: #00568D;
+  }
+}
+.custom-card {
+  border: 2px solid #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #2c3e50;
+
+  .card-title {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .card-text {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-custom {
+    background-color: #00568D;
+    border-color: #00568D;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+
+    &:hover, &:active, &:focus {
+      background-color: #00A693;
+      border-color: #00A693;
+    }
+  }
+  &:hover, &:active, &:focus {
+    background-color: #eeeded;
+    border-color: #00ff73;
+  }
+}
+
+
