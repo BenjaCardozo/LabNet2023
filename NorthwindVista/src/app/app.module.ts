@@ -11,13 +11,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { ShippersModule } from './modules/northwind/shippers/shippers.module';
+import { CategoriesFormComponent } from './components/categories/categoriesForm/categoriesForm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    CategoriesFormComponent
   ],
   imports: [
     BrowserModule,
