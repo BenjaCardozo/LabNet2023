@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router  } from '@angular/router';
-import { ShippersService } from './../../../../../shared/service/northwind/shippers/shippers.service';
+import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
 import { ShippersModel } from 'src/app/shared/models/northwind/shippers/shippersModel';
 
 

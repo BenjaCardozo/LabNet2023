@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShippersModel } from '../../../shared/models/northwind/shippers/shippersModel';
-import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
+import { ShippersModel } from '../../shared/models/northwind/shippers/shippersModel';
+import { ShippersService } from '../../shared/service/northwind/shippers/shippers.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({

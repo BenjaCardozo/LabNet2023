@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
 import { ShippersRoutingModule } from './shippers-routing.module';
-import { ShippersComponent } from './shippers.component';
-import { ShippersFormComponent } from '../shippers/child/shippersForm/shippersForm.component';
+import { ShippersComponent } from '../../../components/shippers/shippers.component';
+import { ShippersFormComponent } from '../../../components/shippers/shippersForm/shippersForm.component';
 
 
 
