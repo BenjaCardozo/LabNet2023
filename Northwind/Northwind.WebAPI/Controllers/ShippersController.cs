@@ -58,33 +58,6 @@ namespace Northwind.WebAPI.Controllers
             
         }
 
-        [HttpGet]
-        [Route("api/Shippers/GetShippersByString/{companyName}")]
-        public IHttpActionResult GetShippersByString(string companyName)
-        {
-            try
-            {
-                if(companyName != null)
-                {
-                    return Ok(_service.GetByString(companyName));
-                }
-                else
-                {
-                    return BadRequest("Ingrese un valor por favor.");
-                }
-                
-            }
-            catch (MyException)
-            {
-                return BadRequest("No se ha encontrado expedidores.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-        }
-
         [HttpPut]
         [Route("api/Shippers/{id}")]
         public IHttpActionResult UpdateShipper(int id, ShippersViewModel shippers)

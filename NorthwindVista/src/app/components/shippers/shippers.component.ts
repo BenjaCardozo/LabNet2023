@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShippersModel } from '../../shared/models/northwind/shippers/shippersModel';
 import { ShippersService } from '../../shared/service/northwind/shippers/shippers.service';
-import { FormGroup, FormControl } from '@angular/forms';
-
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-shippers',
   templateUrl: './shippers.component.html',
@@ -12,7 +11,7 @@ export class ShippersComponent implements OnInit {
 
   public shippers: ShippersModel [];
   public shipperToDelete: ShippersModel;
-  public searchForm: FormGroup;
+  public filtroSearch = new BehaviorSubject<string>('');
 
   constructor(private shippersService: ShippersService) {
     this.shippers = [];
@@ -21,9 +20,6 @@ export class ShippersComponent implements OnInit {
       CompanyName: '',
       Phone: ''
     }
-    this.searchForm = new FormGroup({
-      companyName: new FormControl('')
-    })
   }
 
   ngOnInit(): void {
@@ -43,7 +39,8 @@ export class ShippersComponent implements OnInit {
       });
   }
   deleteShipper(shipperId: number | null) :void {
-    this.shippersService.deleteShipper(shipperId)
+    if (shipperId) {
+      this.shippersService.deleteShipper(shipperId)
       .subscribe({
         next: () => {
           this.getShippers();
@@ -52,29 +49,11 @@ export class ShippersComponent implements OnInit {
           console.error(error);
         }
       });
-  }
-
-  getShipperByString(companyName: string | null) : void {
-      if (companyName) {
-        this.shippersService.getShipperByString(companyName)
-          .subscribe({
-            next: shipper => {
-              this.shippers = shipper;
-              console.log('Resultado de búsqueda:', this.shippers);
-            },
-            error: error => {
-              console.log('Error al buscar el shipper', error);
-            }
-          });
-        }
-  }
-
-  onSearch(): void {
-    if (this.searchForm.valid) {
-      const companyName = this.searchForm.get('companyName')?.value;
-      if (companyName) {
-        this.getShipperByString(companyName);
-        }
     }
   }
+
+  handleSearch(value: string) {
+    this.filtroSearch.next(value);
+  }
+
 }

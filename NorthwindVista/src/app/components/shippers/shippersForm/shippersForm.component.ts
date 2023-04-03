@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router  } from '@angular/router';
 import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
@@ -10,7 +10,7 @@ import { ShippersModel } from 'src/app/shared/models/northwind/shippers/shippers
   templateUrl: './shippersForm.component.html',
   styleUrls: ['./shippersForm.component.scss']
 })
-export class ShippersFormComponent implements OnInit, OnChanges {
+export class ShippersFormComponent implements OnInit {
 
   shippersForm: FormGroup;
   isSubmitted = false;
@@ -20,8 +20,7 @@ export class ShippersFormComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private shippersService: ShippersService,
-    private router: Router,
-    )
+    private router: Router,)
     {
       this.shippersForm = this.fb.group({
         companyName: new FormControl(),
@@ -43,11 +42,16 @@ export class ShippersFormComponent implements OnInit, OnChanges {
     if (this.shippersForm.invalid) {
       return;
     }
-
+    let phone: string | null = this.shippersForm.controls['phone'].value;
+    if(phone){
+      phone = this.shippersForm.controls['phone'].value;
+    } else {
+      phone = null;
+    }
     const shipper: ShippersModel = {
       ShipperId: null,
       CompanyName: this.shippersForm.controls['companyName'].value,
-      Phone: this.shippersForm.controls['phone'].value
+      Phone: phone
     }
 
     if (this.shipperId) {
@@ -61,11 +65,6 @@ export class ShippersFormComponent implements OnInit, OnChanges {
       });
     }
   }
-
-  ngOnChanges(): void{
-    console.log('aaa');
-  }
-
   initForm(): void{
     this.shippersForm = this.fb.group({
       companyName:['', [Validators.required, Validators.pattern('^[a-zA-ZñÑ\\s]+$'), Validators.maxLength(40)]],

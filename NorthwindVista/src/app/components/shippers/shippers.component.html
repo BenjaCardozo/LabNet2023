@@ -1,11 +1,8 @@
 <div class="container">
-  <div class="d-flex justify-content-end mb-3">
-    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearch()">
-      <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Buscar" formControlName="companyName">
-      <button class="btn btn-light" type="submit">Buscar</button>
-    </form>
-  </div>
-  <h1>Lista de Shippers</h1>
+  <app-search (search)="handleSearch($event)"></app-search>
+  <br>
+  <br>
+  <h1>Lista de Expedidores</h1>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead class="thead-dark">
@@ -14,18 +11,19 @@
           <th>Compañía</th>
           <th>Teléfono</th>
           <th>Acciones</th>
+          <th><a href="/shippers/agregar" type="button" class="btn btn-custom">Agregar</a></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let shipper of shippers, let i = index">
+        <tr *ngFor="let shipper of shippers | search: (filtroSearch | async) , let i = index">
           <td>{{i+1}}</td>
           <td>{{ shipper.CompanyName }}</td>
           <td>{{ shipper.Phone }}</td>
           <td>
-            <a type="button" class="btn mx-1 my-1 btn btn-custom">Ver</a>
             <a type="button" class="btn mx-1 my-1 btn-custom" [routerLink]="['/shippers/editar/', shipper.ShipperId]">Editar</a>
             <button type="button" class="btn mx-1 my-1 btn-custom" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" (click)="shipperToDelete = shipper">Eliminar</button>
           </td>
+          <td></td>
         </tr>
       </tbody>
     </table>

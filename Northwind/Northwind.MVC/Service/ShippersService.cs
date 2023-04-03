@@ -39,18 +39,6 @@ namespace Northwind.MVC.Service
                 throw;
             }
         }
-        public List<ShippersViewModel> GetByString(string companyName)
-        {
-            try
-            {
-                return _logic.GetByString(companyName).Select(shipper => MapViewModel(shipper)).ToList();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
         public void Insert(ShippersViewModel shippersView)
         {
             try

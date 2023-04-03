@@ -14,11 +14,6 @@ namespace Northwind.WebAPI
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "ShippersByCompanyName",
-                url: "shippers/GetShippersByString/{companyName}",
-                defaults: new { controller = "Shippers", action = "GetShippersByString", name = UrlParameter.Optional }
-            );
         }
     }
 }

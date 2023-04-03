@@ -3,67 +3,67 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { ShippersModel } from '../../../models/northwind/shippers/shippersModel';
+import { CategoriesModel } from '../../../models/northwind/categories/categoriesModel';
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShippersService {
+export class CategoriesService {
 
-  private shippersUrl: string = environment.northwind + 'api/shippers/';
+  private categoriesUrl: string = environment.northwind + 'api/categories/'
 
   constructor(private http: HttpClient) { }
 
-  getShippers(): Observable<ShippersModel[]> {
+  getCategories(): Observable<CategoriesModel[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.get<ShippersModel[]>(this.shippersUrl, { headers: headers })
+    return this.http.get<CategoriesModel[]>(this.categoriesUrl, { headers: headers })
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getShipperById(shipperId: number): Observable<ShippersModel> {
+  getCategoriesById(categoryId: number): Observable<CategoriesModel> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.get<ShippersModel>(this.shippersUrl + shipperId, { headers: headers })
+    return this.http.get<CategoriesModel>(this.categoriesUrl + categoryId, { headers: headers })
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-   addShipper(shipper: ShippersModel): Observable<ShippersModel> {
+  addCategory(category: CategoriesModel): Observable<CategoriesModel> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<ShippersModel>(this.shippersUrl, shipper, { headers: headers })
+    return this.http.post<CategoriesModel>(this.categoriesUrl, category, { headers: headers })
     .pipe(
       catchError(this.errorHandler)
     )
-   }
+  }
 
-   updateShipper(shipperId: number, shipper: ShippersModel): Observable<void> {
+  updateCategory(categoryId: number, category: CategoriesModel): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.put<void>(this.shippersUrl + shipperId, shipper, { headers: headers })
+    return this.http.put<void>(this.categoriesUrl + categoryId, category, { headers: headers })
     .pipe(
       catchError(this.errorHandler)
     )
-   }
+  }
 
-   deleteShipper(shipperId: number | null): Observable<void> {
+  deleteCategory(categoryId: number): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.delete<void>(this.shippersUrl+ shipperId, { headers: headers })
-    .pipe(
+    return this.http.delete<void>(this.categoriesUrl + categoryId, { headers: headers })
+    .pipe (
       catchError(this.errorHandler)
     )
-   }
+  }
 
   errorHandler(error:any) {
     let errorMessage = '';
