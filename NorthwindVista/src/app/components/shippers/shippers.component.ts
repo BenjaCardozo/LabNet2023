@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ShippersModel } from '../../shared/models/northwind/shippers/shippersModel';
 import { ShippersService } from '../../shared/service/northwind/shippers/shippers.service';
 import { BehaviorSubject } from 'rxjs';
+
+
 @Component({
   selector: 'app-shippers',
   templateUrl: './shippers.component.html',
@@ -12,6 +14,8 @@ export class ShippersComponent implements OnInit {
   public shippers: ShippersModel [];
   public shipperToDelete: ShippersModel;
   public filtroSearch = new BehaviorSubject<string>('');
+  error: string= '';
+  exito: string = '';
 
   constructor(private shippersService: ShippersService) {
     this.shippers = [];
@@ -23,6 +27,7 @@ export class ShippersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.hideMessagesAfterDelay();
     this.getShippers();
   }
 
@@ -31,10 +36,9 @@ export class ShippersComponent implements OnInit {
       .subscribe({
         next: shippers => {
           this.shippers = shippers;
-          console.log('Lista de shippers:', this.shippers);
         },
-        error: error => {
-          console.log('Error al obtener la lista de shippers', error);
+        error: () => {
+          this.error = 'No se pudo cargar la lista de expedidores, por favor intentelo más tarde.';
         }
       });
   }
@@ -43,10 +47,11 @@ export class ShippersComponent implements OnInit {
       this.shippersService.deleteShipper(shipperId)
       .subscribe({
         next: () => {
+          this.exito = 'Expedidor eliminado con éxito.';
           this.getShippers();
         },
-        error: error => {
-          console.error(error);
+        error: () => {
+          this.error = 'No fue posible eliminar el expedidor.';
         }
       });
     }
@@ -56,4 +61,10 @@ export class ShippersComponent implements OnInit {
     this.filtroSearch.next(value);
   }
 
+  hideMessagesAfterDelay(): void {
+    setTimeout(() => {
+      this.error = '';
+      this.exito = '';
+    }, 5000);
+  }
 }

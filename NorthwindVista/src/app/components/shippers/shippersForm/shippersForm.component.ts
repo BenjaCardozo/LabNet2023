@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router  } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+
 import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
 import { ShippersModel } from 'src/app/shared/models/northwind/shippers/shippersModel';
 
@@ -11,11 +13,10 @@ import { ShippersModel } from 'src/app/shared/models/northwind/shippers/shippers
   styleUrls: ['./shippersForm.component.scss']
 })
 export class ShippersFormComponent implements OnInit {
-
   shippersForm: FormGroup;
   isSubmitted = false;
   shipperId?: number;
-
+  errorMessage: string = '';
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -42,12 +43,14 @@ export class ShippersFormComponent implements OnInit {
     if (this.shippersForm.invalid) {
       return;
     }
+
     let phone: string | null = this.shippersForm.controls['phone'].value;
     if(phone){
       phone = this.shippersForm.controls['phone'].value;
     } else {
       phone = null;
     }
+
     const shipper: ShippersModel = {
       ShipperId: null,
       CompanyName: this.shippersForm.controls['companyName'].value,
@@ -56,13 +59,27 @@ export class ShippersFormComponent implements OnInit {
 
     if (this.shipperId) {
       shipper['ShipperId'] = this.shipperId;
-        this.shippersService.updateShipper(this.shipperId, shipper).subscribe(() => {
-        this.router.navigate(['/shippers']);
-      });
+      this.shippersService.updateShipper(this.shipperId, shipper)
+        .pipe(
+          catchError(() => {
+            this.errorMessage = 'No se pudo actualizar el shipper. Por favor, inténtalo de nuevo más tarde.';
+            return (this.errorMessage);
+          })
+        )
+        .subscribe(() => {
+          this.router.navigate(['/shippers']);
+        });
     } else {
-        this.shippersService.addShipper(shipper).subscribe(() => {
-        this.router.navigate(['/shippers']);
-      });
+      this.shippersService.addShipper(shipper)
+        .pipe(
+          catchError(() => {
+            this.errorMessage = 'No se pudo agregar el shipper. Por favor, inténtalo de nuevo más tarde.';
+            return (this.errorMessage);
+          })
+        )
+        .subscribe(() => {
+          this.router.navigate(['/shippers']);
+        });
     }
   }
   initForm(): void{

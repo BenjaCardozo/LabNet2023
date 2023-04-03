@@ -12,7 +12,6 @@ import { HomeComponent } from './components/home/home.component';
 
 import { ShippersModule } from './modules/northwind/shippers/shippers.module';
 import { CategoriesFormComponent } from './components/categories/categoriesForm/categoriesForm.component';
-import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { ErrorComponent } from './components/error/error.component';
     FooterComponent,
     HomeComponent,
     CategoriesFormComponent,
-    ErrorComponent,
   ],
   imports: [
     BrowserModule,

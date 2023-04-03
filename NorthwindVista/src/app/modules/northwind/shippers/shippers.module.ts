@@ -8,7 +8,7 @@ import { ShippersRoutingModule } from './shippers-routing.module';
 import { ShippersComponent } from '../../../components/shippers/shippers.component';
 import { ShippersFormComponent } from '../../../components/shippers/shippersForm/shippersForm.component';
 import { SearchComponent } from '../../../components/shippers/search/search.component';
-import { SearchPipe } from '../../../components/pipes/search.pipe';
+import { SearchPipe } from '../../../pipes/search.pipe';
 
 
 

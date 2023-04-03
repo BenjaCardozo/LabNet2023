@@ -86,6 +86,13 @@ h1 {
       background-color: #ebebeb;
     }
   }
+  .message-fixed-top {
+    height: 4rem;
+    width: 15rem;
+    position: fixed;
+    top: 85vh;
+    left: 35%;
+  }
 }
 .modal-header {
   background-color: #343a40;

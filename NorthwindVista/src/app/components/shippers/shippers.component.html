@@ -2,6 +2,12 @@
   <app-search (search)="handleSearch($event)"></app-search>
   <br>
   <br>
+  <div *ngIf="error" class="alert alert-danger message-fixed-top" role="alert">
+    {{error}}
+  </div>
+  <div *ngIf="exito" class="alert alert-success message-fixed-top" role="alert">
+    {{exito}}
+  </div>
   <h1>Lista de Expedidores</h1>
   <div class="table-responsive">
     <table class="table table-striped">
@@ -11,7 +17,7 @@
           <th>Compañía</th>
           <th>Teléfono</th>
           <th>Acciones</th>
-          <th><a href="/shippers/agregar" type="button" class="btn btn-custom">Agregar</a></th>
+          <th><a type="button" [routerLink]="['/shippers/agregar/']" class="btn btn-custom"><i class="bi bi-plus-circle"></i></a></th>
         </tr>
       </thead>
       <tbody>
@@ -20,8 +26,8 @@
           <td>{{ shipper.CompanyName }}</td>
           <td>{{ shipper.Phone }}</td>
           <td>
-            <a type="button" class="btn mx-1 my-1 btn-custom" [routerLink]="['/shippers/editar/', shipper.ShipperId]">Editar</a>
-            <button type="button" class="btn mx-1 my-1 btn-custom" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" (click)="shipperToDelete = shipper">Eliminar</button>
+            <a type="button" class="btn mx-1 my-1 btn-custom" [routerLink]="['/shippers/editar/', shipper.ShipperId]"><i class="bi bi-pencil"></i></a>
+            <button type="button" class="btn mx-1 my-1 btn-custom" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" (click)="shipperToDelete = shipper"><i class="bi bi-trash"></i></button>
           </td>
           <td></td>
         </tr>
