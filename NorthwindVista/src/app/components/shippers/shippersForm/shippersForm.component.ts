@@ -4,8 +4,8 @@ import { ActivatedRoute, Router  } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
-import { ShippersModel } from '../../../shared/models/northwind/shippers/shippers.model';
+import { ShippersService } from '../../../shared/service/shippers/shippers.service';
+import { ShippersModel } from '../../../shared/models/shippers/shippers.model';
 
 
 

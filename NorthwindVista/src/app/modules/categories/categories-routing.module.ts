@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CategoriesComponent } from '../../../components/categories/categories.component';
-import { CategoriesFormComponent } from '../../../components/categories/categoriesForm/categoriesForm.component';
+import { CategoriesComponent } from '../../components/categories/categories.component';
+import { CategoriesFormComponent } from '../../components/categories/categoriesForm/categoriesForm.component';
 
 
 const routes: Routes = [

@@ -4,8 +4,8 @@ import { ActivatedRoute, Router  } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { CategoriesService } from '../../../shared/service/northwind/categories/categories.service';
-import { CategoriesModel } from '../../../shared/models/northwind/categories/categories.model';
+import { CategoriesService } from '../../../shared/service/categories/categories.service';
+import { CategoriesModel } from '../../../shared/models/categories/categories.model';
 
 @Component({
   selector: 'app-categories-form',

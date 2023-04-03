@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
-import { ShippersModel } from '../../../shared/models/northwind/shippers/shippers.model';
-import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
+import { ShippersModel } from '../../../shared/models/shippers/shippers.model';
+import { ShippersService } from '../../../shared/service/shippers/shippers.service';
 
 @Component({
   selector: 'app-search',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShippersComponent } from '../../../components/shippers/shippers.component';
-import { ShippersFormComponent } from '../../../components/shippers/shippersForm/shippersForm.component';
+import { ShippersComponent } from '../../components/shippers/shippers.component';
+import { ShippersFormComponent } from '../../components/shippers/shippersForm/shippersForm.component';
 
 const routes: Routes = [
   { path: 'shippers', component: ShippersComponent },

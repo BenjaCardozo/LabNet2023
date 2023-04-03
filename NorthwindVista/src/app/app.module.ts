@@ -10,10 +10,9 @@ import { NavBarComponent } from './components/navBar/navBar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 
-import { ShippersModule } from './modules/northwind/shippers/shippers.module';
-import { CategoriesModule } from './modules/northwind/categories/categories.module';
+import { ShippersModule } from './modules/shippers/shippers.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 import { AboutmeComponent } from './components/aboutme/aboutme.component';
-import { RickandmortyComponent } from './components/rickandmorty/rickandmorty.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { RickandmortyComponent } from './components/rickandmorty/rickandmorty.co
     FooterComponent,
     HomeComponent,
     AboutmeComponent,
-    RickandmortyComponent,
   ],
   imports: [
   BrowserModule,

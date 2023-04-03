@@ -4,11 +4,11 @@ import { CommonModule, AsyncPipe  } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-import { CategoriesComponent } from '../../../components/categories/categories.component';
+import { CategoriesComponent } from '../../components/categories/categories.component';
 import { CategoriesFormComponent } from 'src/app/components/categories/categoriesForm/categoriesForm.component';
 import { CategoriesRoutingModule } from './categories-routing.module';
-import { SearchPipe } from '../../../components/categories/pipes/search.pipe';
-import { SearchComponent } from '../../../components/categories/search/search.component';
+import { SearchPipe } from '../../components/categories/pipes/search.pipe';
+import { SearchComponent } from '../../components/categories/search/search.component';
 
 
 

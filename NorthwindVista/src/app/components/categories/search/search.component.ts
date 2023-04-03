@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
-import { CategoriesModel } from '../../../shared/models/northwind/categories/categories.model';
-import { CategoriesService } from '../../../shared/service/northwind/categories/categories.service';
+import { CategoriesModel } from '../../../shared/models/categories/categories.model';
+import { CategoriesService } from '../../../shared/service/categories/categories.service';
 
 @Component({
   selector: 'app-search',

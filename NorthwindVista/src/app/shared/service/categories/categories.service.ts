@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { CategoriesModel } from '../../../models/northwind/categories/categories.model';
-import { environment } from '../../../../../environments/environment';
+import { CategoriesModel } from '../../models/categories/categories.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

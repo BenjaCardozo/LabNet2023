@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesModel } from '../../shared/models/northwind/categories/categories.model';
-import { CategoriesService } from './../../shared/service/northwind/categories/categories.service';
+import { CategoriesModel } from '../../shared/models/categories/categories.model';
+import { CategoriesService } from './../../shared/service/categories/categories.service';
 import { BehaviorSubject } from 'rxjs';
 
 
