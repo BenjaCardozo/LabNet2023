@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, AsyncPipe  } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { CategoriesComponent } from '../../../components/categories/categories.component';
 import { CategoriesFormComponent } from 'src/app/components/categories/categoriesForm/categoriesForm.component';
@@ -23,7 +24,8 @@ import { SearchComponent } from '../../../components/categories/search/search.co
     CommonModule,
     CategoriesRoutingModule,
     BrowserAnimationsModule,
-    AsyncPipe
+    AsyncPipe,
+    MatSnackBarModule
   ]
 })
 export class CategoriesModule { }

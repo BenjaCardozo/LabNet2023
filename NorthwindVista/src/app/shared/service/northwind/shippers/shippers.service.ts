@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { ShippersModel } from '../../../models/northwind/shippers/shippersModel';
+import { ShippersModel } from '../../../models/northwind/shippers/shippers.model';
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CategoriesModel } from '../../../shared/models/northwind/categories/categoriesModel';
+import { CategoriesModel } from '../../../shared/models/northwind/categories/categories.model';
 
 @Pipe({
   name: 'search'

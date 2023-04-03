@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 
 import { ShippersModule } from './modules/northwind/shippers/shippers.module';
 import { CategoriesModule } from './modules/northwind/categories/categories.module';
+import { AboutmeComponent } from './components/aboutme/aboutme.component';
+import { RickandmortyComponent } from './components/rickandmorty/rickandmorty.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { CategoriesModule } from './modules/northwind/categories/categories.modu
     NavBarComponent,
     FooterComponent,
     HomeComponent,
+    AboutmeComponent,
+    RickandmortyComponent,
   ],
   imports: [
   BrowserModule,

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesModel } from './../../shared/models/northwind/categories/categoriesModel';
+import { CategoriesModel } from '../../shared/models/northwind/categories/categories.model';
 import { CategoriesService } from './../../shared/service/northwind/categories/categories.service';
 import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-categories',

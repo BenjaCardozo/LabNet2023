@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router  } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CategoriesService } from '../../../shared/service/northwind/categories/categories.service';
-import { CategoriesModel } from '../../../shared/models/northwind/categories/categoriesModel';
+import { CategoriesModel } from '../../../shared/models/northwind/categories/categories.model';
 
 @Component({
   selector: 'app-categories-form',
@@ -21,7 +22,8 @@ export class CategoriesFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private categoriesService: CategoriesService,
-    private router: Router) {
+    private router: Router,
+    private snackBar: MatSnackBar) {
       this.categoriesForm = this.fb.group({
         categoryName: new FormControl(),
         categoryDescription: new FormControl()
@@ -61,6 +63,7 @@ export class CategoriesFormComponent implements OnInit {
         .pipe(
           catchError(() => {
             this.errorMessage = 'No se pudo actualizar la categoria. Por favor, inténtalo de nuevo más tarde.';
+            this.snackBar.open(this.errorMessage, undefined, {duration: 3000});
             return (this.errorMessage);
           })
         )
@@ -72,6 +75,7 @@ export class CategoriesFormComponent implements OnInit {
         .pipe(
           catchError(() => {
             this.errorMessage = 'No se pdo agregar la categoria. Por favor, inténtalo de nuevo más tarde.';
+            this.snackBar.open(this.errorMessage, undefined, {duration: 3000});
             return (this.errorMessage);
           })
         )

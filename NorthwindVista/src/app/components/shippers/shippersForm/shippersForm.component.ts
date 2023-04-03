@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router  } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
-import { ShippersModel } from '../../../shared/models/northwind/shippers/shippersModel';
+import { ShippersModel } from '../../../shared/models/northwind/shippers/shippers.model';
+
 
 
 @Component({
@@ -22,7 +24,8 @@ export class ShippersFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private shippersService: ShippersService,
-    private router: Router)
+    private router: Router,
+    private snackBar: MatSnackBar)
     {
       this.shippersForm = this.fb.group({
         companyName: new FormControl(),
@@ -64,6 +67,7 @@ export class ShippersFormComponent implements OnInit {
         .pipe(
           catchError(() => {
             this.errorMessage = 'No se pudo actualizar el expedidor. Por favor, inténtalo de nuevo más tarde.';
+            this.snackBar.open(this.errorMessage, undefined, {duration: 3000});
             return (this.errorMessage);
           })
         )
@@ -75,6 +79,7 @@ export class ShippersFormComponent implements OnInit {
         .pipe(
           catchError(() => {
             this.errorMessage = 'No se pudo agregar el expedidor. Por favor, inténtalo de nuevo más tarde.';
+            this.snackBar.open(this.errorMessage, undefined, {duration: 3000});
             return (this.errorMessage);
           })
         )
@@ -99,4 +104,5 @@ export class ShippersFormComponent implements OnInit {
       });
     });
   }
+
 }
