@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ShippersModel } from '../shared/models/northwind/shippers/shippersModel';
+import { ShippersModel } from '../../../shared/models/northwind/shippers/shippersModel';
 
 @Pipe({
   name: 'search'

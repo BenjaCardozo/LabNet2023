@@ -29,6 +29,7 @@ export class ShippersComponent implements OnInit {
   ngOnInit(): void {
     this.hideMessagesAfterDelay();
     this.getShippers();
+    this.hideMessagesAfterDelay();
   }
 
   getShippers(): void {
@@ -42,6 +43,7 @@ export class ShippersComponent implements OnInit {
         }
       });
   }
+
   deleteShipper(shipperId: number | null) :void {
     if (shipperId) {
       this.shippersService.deleteShipper(shipperId)
@@ -63,8 +65,8 @@ export class ShippersComponent implements OnInit {
 
   hideMessagesAfterDelay(): void {
     setTimeout(() => {
-      this.error = '';
-      this.exito = '';
+      this.error = ''
+      this.exito = ''
     }, 5000);
   }
 }

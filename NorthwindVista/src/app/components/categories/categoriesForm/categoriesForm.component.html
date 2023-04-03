@@ -1,1 +1,35 @@
-<p>categories-form works!</p>
+<form [formGroup]="categoriesForm" (submit)="onSubmit()" class="form">
+  <h2>{{ categoryId ? 'Edita Categoria' : 'Agregar Categoria'}}</h2>
+  <div class="mb-3">
+    <label for="categoryName" class="form-label">Nombre de la categoria</label>
+    <input
+    type="text"
+    formControlName="categoryName"
+    id="categoryName"
+    class="form-control"
+    placeholder="Nombre de la categoria"
+    [ngClass]="{'is-invalid': categoriesForm.get('categoryName')?.invalid
+    &&
+    categoriesForm.get('categoryName'), 'is-valid': categoriesForm.get('categoryName')?.valid}">
+  </div>
+  <div *ngIf="categoriesForm.get('categoryName') && categoriesForm.get('categoryName')?.errors?.['pattern']" class="alert alert-danger">Solo puede contener letras y espacios</div>
+  <div *ngIf="categoriesForm.get('categoryName') && categoriesForm.get('categoryName')?.errors?.['maxlength']" class="alert alert-danger">Este campo solo puede tener 15 caracteres</div>
+  <div *ngIf="categoriesForm.get('categoryName')?.touched && categoriesForm.get('categoryName')?.errors?.['required']" class="alert alert-danger">Campo requerido</div>
+  <div class="mb-3">
+    <label for="categoryDescription" class="form-label">Descripcion</label>
+    <input
+    formControlName="categoryDescription"
+    id="categoryDescription"
+    class="form-control"
+    placeholder="Descripcion de la categoria"
+    [ngClass]="{'is-invalid': categoriesForm.get('categoryDescription')?.invalid
+    &&
+    categoriesForm.get('categoryDescription'),'is-valid': categoriesForm.get('categoryDescription')?.valid}">
+  </div>
+  <div *ngIf="categoriesForm.get('categoryDescription') && categoriesForm.get('categoryDescription')?.errors?.['pattern']" class="alert alert-danger">Solo puede contener letras y espacios</div>
+  <div *ngIf="categoriesForm.get('categoryDescription') && categoriesForm.get('categoryDescription')?.errors?.['maxlength']" class="alert alert-danger">Este campo solo puede tener 25 caracteres</div>
+  <div>
+    <button type="submit" class="btn btn-custom" [disabled]="categoriesForm.invalid" *ngIf="categoryId">Editar</button>
+    <button type="submit" class="btn btn-custom" [disabled]="categoriesForm.invalid" *ngIf="!categoryId">Agregar</button>
+  </div>
+</form>

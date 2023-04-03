@@ -1,1 +1,63 @@
-<p>categories works!</p>
+<div class="container">
+  <app-search (search)="handleSearch($event)"></app-search>
+  <br>
+  <br>
+  <div *ngIf="error" class="alert alert-danger message-fixed-top" role="alert">
+    {{error}}
+  </div>
+  <div *ngIf="exito" class="alert alert-success message-fixed-top" role="alert">
+    {{exito}}
+  </div>
+  <h1>Lista de Categorias</h1>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th></th>
+          <th>Categoria</th>
+          <th>Descripcion</th>
+          <th>Acciones</th>
+          <th><a type="button" [routerLink]="['/categories/agregar/']" class="btn btn-custom"><i class="bi bi-plus-circle"></i></a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories | search: (filtroSearch | async), let i = index">
+          <td>{{i+1}}</td>
+          <td>{{ category.CategoryName }}</td>
+          <td>{{ category.CategoryDescription }}</td>
+          <td>
+            <a type="button" class="btn mx-1 my-1 btn-custom" [routerLink]="['/categories/editar/', category.CategoryID]"><i class="bi bi-pencil"></i></a>
+            <a type="button" class="btn mx-1 my-1 btn-custom" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" (click)="categoryToDelete = category"><i class="bi bi-trash"></i></a>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <a href="/categories/agregar" type="button" class="btn btn-custom">Agregar</a>
+  </div>
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar eliminación</h5>
+          <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>¿Está seguro de eliminar la siguiente categoria?</p>
+          <br>
+          <p>Nombre de la categoria: {{categoryToDelete.CategoryName}}</p>
+          <br>
+          <p>Descripción: {{categoryToDelete.CategoryDescription}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-custom" (click)="deleteCategory(categoryToDelete.CategoryID)" data-bs-dismiss="modal">Sí</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

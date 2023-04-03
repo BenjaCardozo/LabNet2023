@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
-import { ShippersModel } from '../../../shared/models/northwind/shippers/shippersModel';
-import { ShippersService } from '../../../shared/service/northwind/shippers/shippers.service';
+import { CategoriesModel } from '../../../shared/models/northwind/categories/categoriesModel';
+import { CategoriesService } from '../../../shared/service/northwind/categories/categories.service';
 
 @Component({
   selector: 'app-search',
@@ -14,19 +14,20 @@ import { ShippersService } from '../../../shared/service/northwind/shippers/ship
 export class SearchComponent implements OnInit {
 
   public search: FormControl;
-  public shippers: ShippersModel [];
+  public category: CategoriesModel [];
 
   @Output('search') searchEmiiter = new EventEmitter<string>();
 
-  constructor(private shippersService: ShippersService) {
-    this.shippers = [];
+  constructor(private categoriesService: CategoriesService) {
+    this.category = [];
     this.search = new FormControl('');
    }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.search.valueChanges
     .pipe(
       debounceTime(300)
     ).subscribe(value => this.searchEmiiter.emit(value))
   }
+
 }

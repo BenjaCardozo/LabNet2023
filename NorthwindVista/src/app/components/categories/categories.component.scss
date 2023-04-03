@@ -1,0 +1,107 @@
+.container {
+  h1 {
+    color: #E4007C;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+    form {
+      input {
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        background-color: #f3f3f3;
+        padding: 0 20px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+        box-shadow: none;
+
+        &::placeholder {
+          font-weight: 400;
+          color: #9b9b9b;
+        }
+      }
+
+      button {
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        background-color: #fff;
+        color: #333;
+        font-size: 1rem;
+        font-weight: 500;
+        box-shadow: none;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #f3f3f3;
+        }
+      }
+    }
+    .btn-custom {
+      background-color: #00568D;
+      border-color: #00568D;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+
+      &:hover, &:active, &:focus {
+        background-color: #00A693;
+        border-color: #00A693;
+      }
+    }
+
+    table {
+      margin-top: 2rem;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      font-size: 1.2rem;
+      color: #333;
+      background-color: #fff;
+
+      th {
+        font-weight: bold;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 1rem;
+        text-align: left;
+      }
+
+      td {
+        border: none;
+        padding: 1rem;
+      }
+
+      tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      tbody tr:hover {
+        background-color: #ebebeb;
+      }
+    }
+    .message-fixed-top {
+      height: 4rem;
+      width: 15rem;
+      position: fixed;
+      top: 85vh;
+      left: 35%;
+    }
+  }
+  .modal-header {
+    background-color: #343a40;
+    color: #fff;
+  }
+
+  .modal-footer {
+    background-color: #f8f9fa;
+  }
+
+  .modal-body {
+    color: #000;
+  }

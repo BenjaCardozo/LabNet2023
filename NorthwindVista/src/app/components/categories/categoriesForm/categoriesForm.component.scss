@@ -1,0 +1,70 @@
+.form {
+  .mb-3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    .form-label {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-control {
+      border-radius: 0.25rem;
+      border-color: #ced4da;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .invalid-feedback {
+      margin-top: 0.25rem;
+      font-size: 80%;
+      color: #dc3545;
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+
+    .btn {
+      margin-left: 0.5rem;
+    }
+  }
+  button {
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f3f3f3;
+    }
+  }
+  .btn-custom {
+  background-color: #00568D;
+  border-color: #00568D;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+
+  &:hover, &:active, &:focus {
+    background-color: #00A693;
+    border-color: #00A693;
+    }
+  }
+  .is-invalid {
+    border: 2px solid red;
+  }
+
+  .is-valid {
+    border: 2px solid green;
+  }
+
+}

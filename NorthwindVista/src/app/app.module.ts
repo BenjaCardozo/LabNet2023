@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { ShippersModule } from './modules/northwind/shippers/shippers.module';
-import { CategoriesFormComponent } from './components/categories/categoriesForm/categoriesForm.component';
+import { CategoriesModule } from './modules/northwind/categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -19,14 +19,14 @@ import { CategoriesFormComponent } from './components/categories/categoriesForm/
     NavBarComponent,
     FooterComponent,
     HomeComponent,
-    CategoriesFormComponent,
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
-    ShippersModule
+    ShippersModule,
+    CategoriesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

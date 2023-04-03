@@ -1,5 +1,5 @@
 export interface CategoriesModel {
-  categoryID: number | null;
-  categoryName: string;
-  categoryDescription: string | null;
+  CategoryID: number | null;
+  CategoryName: string;
+  CategoryDescription: string | null;
 }

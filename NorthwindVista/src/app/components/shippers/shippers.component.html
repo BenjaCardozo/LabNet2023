@@ -27,7 +27,7 @@
           <td>{{ shipper.Phone }}</td>
           <td>
             <a type="button" class="btn mx-1 my-1 btn-custom" [routerLink]="['/shippers/editar/', shipper.ShipperId]"><i class="bi bi-pencil"></i></a>
-            <button type="button" class="btn mx-1 my-1 btn-custom" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" (click)="shipperToDelete = shipper"><i class="bi bi-trash"></i></button>
+            <a type="button" class="btn mx-1 my-1 btn-custom" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" (click)="shipperToDelete = shipper"><i class="bi bi-trash"></i></a>
           </td>
           <td></td>
         </tr>

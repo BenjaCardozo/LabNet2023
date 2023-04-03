@@ -3,6 +3,7 @@
   <div class="mb-3">
     <label for="companyName" class="form-label">Nombre de la Compañia</label>
     <input
+    type="text"
     formControlName="companyName"
     id="companyName"
     class="form-control"
@@ -29,6 +30,5 @@
   <div>
     <button type="submit" class="btn btn-custom" [disabled]="shippersForm.invalid" *ngIf="shipperId">Editar</button>
     <button type="submit" class="btn btn-custom" [disabled]="shippersForm.invalid" *ngIf="!shipperId">Agregar</button>
-    <!-- (click)="addShipper()"  -->
   </div>
 </form>
