@@ -1,5 +1,5 @@
 
-let numero = Math.floor(Math.random() * 30) + 1;
+let numero = getNumeroRandom();
 let intentos = 10;
 let puntajeMax = 0;
 let puntajeActual = 10;
@@ -64,10 +64,15 @@ function procesarEntrada() {
     resultadoP.style.color = "black";
   }
 }
+
+function getNumeroRandom(){
+  return Math.floor(Math.random() * 30) + 1;
+  }
+  
 let reiniciarBtn = document.getElementById("reiniciar-btn");
 
 reiniciarBtn.addEventListener("click", function() {
-  numero = Math.floor(Math.random() * 30) + 1;
+  numero = getNumeroRandom();
   intentos = 10;
   puntajeActual = 10;
 
@@ -77,5 +82,6 @@ reiniciarBtn.addEventListener("click", function() {
   rangoP.innerHTML = "";
   resultadoP.innerHTML = "";
 });
+
 
 adivinarBtn.addEventListener("click", procesarEntrada);
